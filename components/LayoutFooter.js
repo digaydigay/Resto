@@ -6,7 +6,7 @@ const LayoutFooter = () => {
     <div className="footer">
       <div className="column1">
         <div className="logo">
-          <Image src={resto} />
+          <Image src={resto} alt="resto" />
         </div>
         <h2>Resto</h2>
         <p>Copyright ©2021 All rights reserved : code by digay</p>

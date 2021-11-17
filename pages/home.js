@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/assets/resto.png" />
         <script
           src="https://kit.fontawesome.com/fe2e019d14.js"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
       </Head>
 

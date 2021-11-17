@@ -14,6 +14,7 @@ const Banner = () => {
             layout="fill"
             objectFit="cover"
             objectPosition="left"
+            alt="banner1"
           />
 
           <Carousel.Caption>
@@ -31,6 +32,7 @@ const Banner = () => {
             layout="fill"
             objectFit="cover"
             objectPosition="right"
+            alt="banner2"
           />
           <Carousel.Caption>
             <h1>Health Requires Healthy Food</h1>

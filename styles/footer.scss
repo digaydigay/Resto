@@ -1,0 +1,70 @@
+@import "./variable.scss";
+
+.footer {
+  min-height: 100px;
+  background: $secondary;
+  font-family: "Estonia", cursive;
+  padding: 20px 10px;
+
+  letter-spacing: 2px;
+  color: $textNdark;
+  display: grid;
+  grid-template-columns: 400px 1fr 300px;
+
+  @media screen and (max-width: 850px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .column1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .logo {
+      max-width: 50px;
+      cursor: pointer;
+    }
+  }
+  .column2 {
+    width: 100%;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px;
+    ul {
+      li {
+        width: max-content;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary;
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+  .column3 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    ul {
+      display: flex;
+      border-bottom: 2px solid $primary;
+      padding: 5px 10px;
+      border-radius: 5px;
+      justify-content: center;
+      width: 100%;
+      li {
+        font-size: 25px;
+        margin-left: 10px;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary;
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}

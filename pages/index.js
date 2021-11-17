@@ -1,5 +1,8 @@
 import Head from "next/head";
 
+import Banner from "../components/Home/banner";
+import FeaturedDish from "../components/Home/featureddish";
+
 export default function Home() {
   return (
     <div>
@@ -12,8 +15,10 @@ export default function Home() {
           crossOrigin="anonymous"
         ></script>
       </Head>
-
-      <div>this is main</div>
+      <div className="home">
+        <Banner />
+        <FeaturedDish />
+      </div>
     </div>
   );
 }

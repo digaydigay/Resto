@@ -8,7 +8,7 @@
       overflow: hidden;
     }
     .carousel-item {
-      height: 450px;
+      height: 500px;
       width: 100%;
       animation: banner ease-in 300ms 1;
       opacity: 1;
@@ -21,7 +21,10 @@
         position: absolute;
         bottom: 0;
         background: linear-gradient(
-          rgba(255, 127, 80, 0),
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.4),
           rgba(0, 0, 0, 0.5),
           rgba(0, 0, 0, 0.6),
           rgba(0, 0, 0, 0.7)
@@ -68,6 +71,70 @@
         border-radius: 50px !important;
         border: none;
       }
+    }
+  }
+
+  .featured-food {
+    .row {
+      .col {
+        position: relative;
+      }
+    }
+
+    .featured-food-title {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      h1 {
+        color: $textNdark;
+
+        font-size: 60px;
+        font-family: "Estonia", cursive;
+        width: max-content;
+        position: relative;
+        padding: 0 10px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 30px;
+          height: 2px;
+          background: $primary;
+          bottom: 0;
+          left: 0;
+          top: 50%;
+          transform: translate(-100%, -50%);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 30px;
+
+          height: 2px;
+          background: $primary;
+          bottom: 0;
+          right: 0;
+          top: 50%;
+          transform: translate(100%, -50%);
+        }
+      }
+    }
+    .featured-food-name {
+      text-align: center;
+
+      h2 {
+        color: $textNdark;
+
+        font-size: 50px;
+        font-family: "Estonia", cursive;
+        width: max-content;
+        position: relative;
+        padding: 0 10px;
+      }
+    }
+    h6 {
+      color: $textNdark;
     }
   }
 }

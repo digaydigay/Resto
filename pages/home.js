@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Banner from "../components/Home/banner";
 
 export default function Home() {
   return (
@@ -13,10 +12,6 @@ export default function Home() {
           crossOrigin="anonymous"
         ></script>
       </Head>
-
-      <div className="home">
-        <Banner />
-      </div>
     </div>
   );
 }

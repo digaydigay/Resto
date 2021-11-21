@@ -12,10 +12,10 @@ const FeaturedDish = () => {
       </div>
       <Container fluid>
         <Row className="mb-5">
-          <Col xs={7} className="foodImg">
+          <Col md={6} xs={12} className="foodImg">
             <Image src={F2} objectPosition="center" />
           </Col>
-          <Col xs={5}>
+          <Col md={6} xs={12}>
             <div className="featured-food-name">
               <h2>Sisig</h2>
             </div>
@@ -30,7 +30,7 @@ const FeaturedDish = () => {
           </Col>
         </Row>
         <Row>
-          <Col xs={5}>
+          <Col md={6} xs={12} xs={{ order: "last" }} md={{ order: "first" }}>
             <div className="featured-food-name">
               <h2>Rice Bowls</h2>
             </div>
@@ -41,7 +41,7 @@ const FeaturedDish = () => {
               format.”
             </h6>
           </Col>
-          <Col xs={7} className="foodImg">
+          <Col md={6} xs={12} className="foodImg" xs={{ order: "first" }}>
             <Image src={F1} objectPosition="center" />
           </Col>
         </Row>

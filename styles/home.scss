@@ -1,6 +1,6 @@
 @import "./variable.scss";
 .home {
-  background: $secondary;
+  background: white;
   .home_banner {
     .carousel {
       position: relative;
@@ -92,7 +92,7 @@
       display: flex;
       justify-content: center;
       h1 {
-        color: $textNdark;
+        color: $secondary;
 
         font-size: 60px;
         font-family: "Estonia", cursive;
@@ -130,8 +130,8 @@
       text-align: center;
 
       h2 {
-        color: white;
-        background: $primary;
+        color: $secondary;
+        background: white;
         width: 100%;
         font-size: 50px;
         font-family: "Estonia", cursive;
@@ -142,7 +142,7 @@
       }
     }
     h6 {
-      color: $textNdark;
+      color: $secondary;
       text-align: justify;
     }
   }
@@ -155,8 +155,6 @@
 
     .carousel {
       margin: 0 20px;
-      border-radius: 50px;
-      overflow: hidden;
       .carousel-indicators {
         button {
           height: 10px;
@@ -174,9 +172,13 @@
 
           .card-body {
             text-align: center;
+            color: $secondary;
+            p {
+              color: $secondary;
+            }
           }
           .cardimg {
-            width: 50px;
+            width: 50px !important;
             height: 50px;
             border-radius: 50px;
             overflow: hidden;

@@ -20,7 +20,7 @@ const Testimonial = () => {
             </Card.Body>
             <Card.Footer>
               <div className="cardimg">
-                <Image src={P1} objectPosition="center" />
+                <Image src={P1} objectPosition="center" alt="img" />
               </div>
               <Card.Title>Jonathan Digay 2</Card.Title>
               <Card.Subtitle>student</Card.Subtitle>
@@ -45,7 +45,7 @@ const Testimonial = () => {
 
             <Card.Footer>
               <div className="cardimg">
-                <Image src={P1} objectPosition="center" />
+                <Image src={P1} objectPosition="center" alt="img" />
               </div>
               <Card.Title>Jonathan Digay</Card.Title>
               <Card.Subtitle>student</Card.Subtitle>

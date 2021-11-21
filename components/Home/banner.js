@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Banner1 from "../../public/assets/banner1.jpg";
 import Banner2 from "../../public/assets/banner2.jpg";
+
 import { Carousel } from "react-bootstrap";
 const Banner = () => {
   return (
@@ -15,6 +16,7 @@ const Banner = () => {
             objectFit="cover"
             objectPosition="left"
             alt="banner1"
+            className="img"
           />
 
           <Carousel.Caption>
@@ -33,10 +35,14 @@ const Banner = () => {
             objectFit="cover"
             objectPosition="right"
             alt="banner2"
+            className="img"
           />
           <Carousel.Caption>
             <h1>Health Requires Healthy Food</h1>
-            <button>Create an Account</button>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
+              expedita unde sequi cum.
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

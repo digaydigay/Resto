@@ -76,8 +76,14 @@
 
   .featured-food {
     .row {
-      .col {
-        position: relative;
+      margin: 0 20px 20px 20px;
+
+      .foodImg {
+        display: flex;
+        align-items: center;
+
+        display: flex;
+        justify-content: center;
       }
     }
 
@@ -124,17 +130,71 @@
       text-align: center;
 
       h2 {
-        color: $textNdark;
-
+        color: white;
+        background: $primary;
+        width: 100%;
         font-size: 50px;
         font-family: "Estonia", cursive;
         width: max-content;
         position: relative;
         padding: 0 10px;
+        border-radius: 20px 20px 20px 0;
       }
     }
     h6 {
       color: $textNdark;
+      text-align: justify;
+    }
+  }
+
+  .testimonial {
+    background: white;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+
+    .carousel {
+      margin: 0 20px;
+      border-radius: 50px;
+      overflow: hidden;
+      .carousel-indicators {
+        button {
+          height: 10px;
+          width: 10px;
+          border: none;
+          border-radius: 50px;
+          border: 1px solid $primary;
+          background: $primary;
+        }
+      }
+      .carousel-item {
+        .card {
+          padding: 20px;
+          max-width: 500px;
+
+          .card-body {
+            text-align: center;
+          }
+          .cardimg {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            overflow: hidden;
+            background: red;
+          }
+          .card-footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+      .carousel-control-prev,
+      .carousel-control-next {
+        background: $primary;
+        width: 20px;
+      }
     }
   }
 }

@@ -1,7 +1,9 @@
 import Head from "next/head";
+import { Container } from "react-bootstrap";
 
 import Banner from "../components/Home/banner";
 import FeaturedDish from "../components/Home/featureddish";
+import Testimonial from "../components/Home/testimonial";
 
 export default function Home() {
   return (
@@ -18,6 +20,8 @@ export default function Home() {
       <div className="home">
         <Banner />
         <FeaturedDish />
+
+        <Testimonial />
       </div>
     </div>
   );

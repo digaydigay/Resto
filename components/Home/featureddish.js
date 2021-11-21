@@ -4,7 +4,6 @@ import Image from "next/image";
 import F1 from "../../public/assets/featured1.jpg";
 import F2 from "../../public/assets/featured2.jpg";
 const FeaturedDish = () => {
-  const [food, setFood] = useState([]);
   return (
     <div className="featured-food">
       <div className="featured-food-title">
@@ -30,7 +29,7 @@ const FeaturedDish = () => {
           </Col>
         </Row>
         <Row>
-          <Col md={6} xs={12} xs={{ order: "last" }} md={{ order: "first" }}>
+          <Col md={6} xs={(12, { order: "last" })} md={{ order: "first" }}>
             <div className="featured-food-name">
               <h2>Rice Bowls</h2>
             </div>
@@ -41,7 +40,7 @@ const FeaturedDish = () => {
               format.”
             </h6>
           </Col>
-          <Col md={6} xs={12} className="foodImg" xs={{ order: "first" }}>
+          <Col md={6} className="foodImg" xs={(12, { order: "first" })}>
             <Image src={F1} objectPosition="center" alt="dish" />
           </Col>
         </Row>

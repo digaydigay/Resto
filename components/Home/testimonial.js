@@ -5,6 +5,9 @@ import P1 from "../../public/assets/featured1.jpg";
 const Testimonial = () => {
   return (
     <div className="testimonial">
+      <div className="title">
+        <h1>Testimonials</h1>
+      </div>
       <Carousel>
         <Carousel.Item>
           <Card>

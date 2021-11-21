@@ -36,7 +36,7 @@
         position: absolute;
         bottom: 80px;
         font-family: "Open Sans", sans-serif;
-        animation: bannertext ease-in 500ms 1;
+        animation: texts ease-in 500ms 1;
         z-index: 4;
 
         h1 {
@@ -84,6 +84,16 @@
 
         display: flex;
         justify-content: center;
+
+        &:nth-child(1) {
+          animation: rights 500ms ease-in-out 1;
+        }
+        &:nth-child(2) {
+          animation: lefts 500ms ease-in-out 1;
+        }
+      }
+      .foodInfo {
+        animation: texts ease-in 500ms 1;
       }
     }
 
@@ -148,13 +158,25 @@
   }
 
   .testimonial {
-    background: white;
+    background: rgb(218, 218, 218);
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding: 10px 0;
 
+    .title {
+      margin-bottom: 10px;
+      font-family: "Estonia", cursive;
+
+      h1 {
+        font-size: 50px;
+      }
+    }
+
     .carousel {
       margin: 0 20px;
+      max-width: 500px;
       .carousel-indicators {
         button {
           height: 10px;
@@ -209,7 +231,7 @@
     opacity: 1;
   }
 }
-@keyframes bannertext {
+@keyframes texts {
   0% {
     opacity: 0.2;
     transform: translateY(100px);
@@ -217,5 +239,25 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes lefts {
+  0% {
+    opacity: 0.2;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+@keyframes rights {
+  0% {
+    opacity: 0.2;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
   }
 }

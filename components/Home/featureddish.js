@@ -14,7 +14,7 @@ const FeaturedDish = () => {
           <Col md={6} xs={12} className="foodImg">
             <Image src={F2} objectPosition="center" alt="dish" />
           </Col>
-          <Col md={6} xs={12}>
+          <Col md={6} xs={12} className="foodInfo">
             <div className="featured-food-name">
               <h2>Sisig</h2>
             </div>
@@ -29,7 +29,12 @@ const FeaturedDish = () => {
           </Col>
         </Row>
         <Row>
-          <Col md={6} xs={(12, { order: "last" })} md={{ order: "first" }}>
+          <Col
+            md={6}
+            xs={(12, { order: "last" })}
+            md={{ order: "first" }}
+            className="foodInfo"
+          >
             <div className="featured-food-name">
               <h2>Rice Bowls</h2>
             </div>

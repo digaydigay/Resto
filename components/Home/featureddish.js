@@ -30,9 +30,8 @@ const FeaturedDish = () => {
         </Row>
         <Row>
           <Col
-            md={6}
             xs={(12, { order: "last" })}
-            md={{ order: "first" }}
+            md={(6, { order: "first" })}
             className="foodInfo"
           >
             <div className="featured-food-name">

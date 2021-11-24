@@ -9,8 +9,8 @@ body {
 @import url("https://fonts.googleapis.com/css2?family=Estonia&family=Open+Sans:wght@300;500&display=swap");
 // font-family: 'Open Sans', sans-serif;
 a {
-  color: inherit;
-  text-decoration: none;
+  color: unset !important;
+  text-decoration: none !important;
 }
 
 *,
@@ -30,4 +30,5 @@ ul {
 
 @import "./Header.scss";
 @import "./home.scss";
+@import "./menus.scss";
 @import "./footer.scss";

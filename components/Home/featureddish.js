@@ -1,18 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
 import F1 from "../../public/assets/featured1.jpg";
 import F2 from "../../public/assets/featured2.jpg";
-const FeaturedDish = () => {
+import AOS from "aos";
+
+const FeaturedDish = (c) => {
+  useEffect(() => {
+    AOS.init();
+  }, [c]);
   return (
     <div className="featured-food">
       <div className="featured-food-title">
         <h1>Featured Dishes</h1>
       </div>
       <Container fluid>
-        <Row className="mb-5">
+        <Row
+          className="mb-5"
+          data-aos="flip-left"
+          data-aos-delay="100"
+          data-aos-anchor=".example-selector"
+        >
           <Col md={6} xs={12} className="foodImg">
-            <Image src={F2} objectPosition="center" alt="dish" />
+            <Image
+              src={F2}
+              objectPosition="center"
+              alt="dish"
+              data-aos="zoom-in"
+              data-aos-anchor-placement="top-center"
+              data-aos-duration="600"
+            />
+            <div className="options">
+              <div className="order">
+                <p>P200</p>
+                <button>Place Order</button>
+              </div>
+
+              <div className="detail">Details</div>
+            </div>
           </Col>
           <Col md={6} xs={12} className="foodInfo">
             <div className="featured-food-name">

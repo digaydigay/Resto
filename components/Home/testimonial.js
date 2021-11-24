@@ -13,9 +13,8 @@ const Testimonial = () => {
           <Card>
             <Card.Body>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Provident totam incidunt modi sunt! Asperiores ex modi vitae
-                nostrum, necessitatibus quia soluta suscipit molestias ea iusto
+                recusandae, adipisci mollitia omnis quisquam sint commodi iusto
+                perspiciatis ut porro nobis ex facilis incidunt repellat iste?
                 doloribus expedita, dignissimos velit commodi? Quia cumque odit
                 recusandae, adipisci mollitia omnis quisquam sint commodi iusto
                 perspiciatis ut porro nobis ex facilis incidunt repellat iste?
@@ -34,10 +33,6 @@ const Testimonial = () => {
           <Card>
             <Card.Body>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Provident totam incidunt modi sunt! Asperiores ex modi vitae
-                nostrum, necessitatibus quia soluta suscipit molestias ea iusto
-                doloribus expedita, dignissimos velit commodi? Quia cumque odit
                 recusandae, adipisci mollitia omnis quisquam sint commodi iusto
                 perspiciatis ut porro nobis ex facilis incidunt repellat iste?
                 doloribus expedita, dignissimos velit commodi? Quia cumque odit

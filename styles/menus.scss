@@ -2,7 +2,7 @@
 .menus {
   height: 100%;
   padding-top: 100px;
-  background: url("../public//assets/banner2.jpg") center/cover no-repeat;
+  background: url("./assets/banner1.jpg") center/cover no-repeat;
   background-attachment: fixed;
 
   .search {
@@ -49,6 +49,8 @@
       margin: 5px;
       .card-body {
         padding: 0;
+
+        max-height: 300px;
       }
       .card-title {
         padding-left: 10px;

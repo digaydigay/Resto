@@ -71,6 +71,14 @@ const FeaturedDish = (c) => {
           </Col>
           <Col md={6} className="foodImg" xs={(12, { order: "first" })}>
             <Image src={F1} objectPosition="center" alt="dish" />
+            <div className="options">
+              <div className="order">
+                <p>P200</p>
+                <button>Place Order</button>
+              </div>
+
+              <div className="detail">Details</div>
+            </div>
           </Col>
         </Row>
       </Container>

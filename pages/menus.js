@@ -19,7 +19,7 @@ export default function Home() {
         <div className="head"></div>
         <div className="search">
           <form>
-            <input type="search" placeholder="search" />
+            <input type="search" placeholder="search dish..." />
             <button>
               <i className="fas fa-search"></i>
             </button>
@@ -28,7 +28,14 @@ export default function Home() {
 
         <div className="menus-food">
           <Row>
-            <Col xs={6} sm={6} md={4} lg={3} xxl={2}>
+            <Col
+              xs={6}
+              sm={6}
+              md={4}
+              lg={3}
+              xxl={2}
+              className="d-flex justify-content-center"
+            >
               <Card>
                 <Card.Body>
                   <Image src={M1} />
@@ -45,7 +52,14 @@ export default function Home() {
                 </Card.Footer>
               </Card>
             </Col>
-            <Col xs={6} sm={6} md={4} lg={3} xxl={2}>
+            <Col
+              xs={6}
+              sm={6}
+              md={4}
+              lg={3}
+              xxl={2}
+              className="d-flex justify-content-center"
+            >
               <Card>
                 <Card.Body>
                   <Image src={M1} />
@@ -62,7 +76,14 @@ export default function Home() {
                 </Card.Footer>
               </Card>
             </Col>
-            <Col xs={6} sm={6} md={4} lg={3} xxl={2}>
+            <Col
+              xs={6}
+              sm={6}
+              md={4}
+              lg={3}
+              xxl={2}
+              className="d-flex justify-content-center"
+            >
               <Card>
                 <Card.Body>
                   <Image src={M1} />
@@ -79,7 +100,14 @@ export default function Home() {
                 </Card.Footer>
               </Card>
             </Col>
-            <Col xs={6} sm={6} md={4} lg={3} xxl={2}>
+            <Col
+              xs={6}
+              sm={6}
+              md={4}
+              lg={3}
+              xxl={2}
+              className="d-flex justify-content-center"
+            >
               <Card>
                 <Card.Body></Card.Body>
                 <Card.Title>Bowl Rice</Card.Title>

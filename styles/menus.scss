@@ -2,11 +2,8 @@
 .menus {
   height: 100%;
   padding-top: 100px;
-  background-image: url("../public//assets/banner2.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: url("../public//assets/banner2.jpg") center/cover no-repeat;
   background-attachment: fixed;
-  background-position: center;
 
   .search {
     padding: 10px 0;

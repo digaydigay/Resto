@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 const LayoutHeader = ({}) => {
   const Router = useRouter();
-
+  const [ulMobile, setUlMobile] = useState(false);
   const [headBg, setHeadBg] = useState(false);
 
   const Active = (e) => {
@@ -14,6 +14,7 @@ const LayoutHeader = ({}) => {
     Router.push(
       `/${innerText.toLowerCase() === "home" ? "" : innerText.toLowerCase()}`
     );
+    setUlMobile(!ulMobile);
   };
 
   useEffect(() => {
@@ -25,6 +26,9 @@ const LayoutHeader = ({}) => {
       }
     });
   });
+  const onSetUlmobile = () => {
+    setUlMobile(!ulMobile);
+  };
 
   return (
     <div className={`header ${headBg && "headBg"}`}>
@@ -32,34 +36,43 @@ const LayoutHeader = ({}) => {
         <div className="resto_logo">
           <Image src={resto} alt="resto" />
         </div>
-        <ul className="header_nav">
-          <li
-            onClick={Active}
-            className={`${Router.asPath === "/" && "li-active"}`}
-          >
-            Home
-          </li>
+        <h3>esto</h3>
+        <div className="header_nav">
+          <div className="bar">
+            <i className="fas fa-bars" onClick={onSetUlmobile}></i>
+          </div>
+          <ul className={`${ulMobile && "ul-mobile"}`}>
+            <li
+              onClick={Active}
+              className={`${Router.asPath === "/" && "li-active"}`}
+            >
+              Home
+            </li>
 
-          <li
-            onClick={Active}
-            className={`${Router.asPath === "/menus" && "li-active"}`}
-          >
-            Menus
-          </li>
-          <li
-            onClick={Active}
-            className={`${Router.asPath === "/contacts" && "li-active"}`}
-          >
-            Contacts
-          </li>
-          <li
-            onClick={Active}
-            className={`${Router.asPath === "/about" && "li-active"}`}
-          >
-            About
-          </li>
-        </ul>
-        <div className="user"></div>
+            <li
+              onClick={Active}
+              className={`${Router.asPath === "/menus" && "li-active"}`}
+            >
+              Menus
+            </li>
+            <li
+              onClick={Active}
+              className={`${Router.asPath === "/contacts" && "li-active"}`}
+            >
+              Contacts
+            </li>
+            <li
+              onClick={Active}
+              className={`${Router.asPath === "/about" && "li-active"}`}
+            >
+              About
+            </li>
+          </ul>
+        </div>
+
+        <div className="user">
+          <i className="fas fa-user"></i>
+        </div>
       </div>
     </div>
   );

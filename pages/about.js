@@ -1,12 +1,8 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-
-export default function About(props) {
-  const [prop, setprop] = useState([]);
-  useEffect(() => {
-    setprop(props.data);
-  }, []);
-
+import Image from "next/image";
+import bg from "../public/assets/banner2.jpg";
+import { Row, Col } from "react-bootstrap";
+export default function About() {
   return (
     <div>
       <Head>
@@ -16,22 +12,49 @@ export default function About(props) {
       </Head>
 
       <div className="about">
-        {prop &&
-          prop.map((data, i) => {
-            return <div key={i}>{data.title}</div>;
-          })}
+        <div className="bg">
+          <Image
+            src={bg}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
+
+        <Row>
+          <Col sm={12} md={6}>
+            <h1>What Resto about is?</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel iusto
+              dolore odit eos qui velit molestiae minus tempore? Animi, tempora
+              quam. Eaque assumenda aliquam amet labore illum totam hic Lorem
+              ipsum dolor sit amet, consectetur adipisicing elit. Facere
+              adipisci molestias molestiae excepturi saepe a soluta totam nisi
+              eaque sequi? mollitia.
+            </p>
+            <p>
+              Eaque assumenda aliquam amet labore illum totam hic Lorem ipsum
+              dolor sit amet, consectetur adipisicing elit. Facere adipisci
+              molestias molestiae excepturi saepe a soluta totam nisi eaque
+              sequi? mollitia.
+            </p>
+          </Col>
+          <Col sm={12} md={6}>
+            <Image src={bg} objectPosition="center" />
+          </Col>
+        </Row>
       </div>
     </div>
   );
 }
 
-export async function getStaticProps() {
-  const fetching = await fetch("https://jsonplaceholder.typicode.com/todos");
-  const data = await fetching.json();
+// export async function getStaticProps() {
+//   const fetching = await fetch("https://jsonplaceholder.typicode.com/todos");
+//   const data = await fetching.json();
 
-  return {
-    props: {
-      data,
-    },
-  };
-}
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Script from "next/script";
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
+import bg from "../public/assets/banner2.jpg";
 import Image from "next/image";
 import M1 from "../public/assets/featured1.jpg";
 export default function Home() {
@@ -16,6 +17,14 @@ export default function Home() {
         crossOrigin="anonymous"
       ></Script>
       <div className="menus">
+        <div className="bg">
+          <Image
+            src={bg}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
         <div className="head"></div>
         <div className="search">
           <form>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
 import F1 from "../../public/assets/featured1.jpg";
@@ -12,14 +12,10 @@ const FeaturedDish = () => {
       </div>
       <Container fluid>
         <Row>
-          <Col
-            md={6}
-            xs={12}
-            className="foodImg"
-            data-aos="fade-right"
-            data-aos-duration="1000"
-          >
-            <Image src={F2} objectPosition="center" alt="dish" />
+          <Col md={6} xs={12} className="foodImg">
+            <div data-aos="fade-right">
+              <Image src={F2} objectPosition="center" alt="dish" />
+            </div>
             <div className="options">
               <div className="order">
                 <p>P200</p>
@@ -33,7 +29,7 @@ const FeaturedDish = () => {
             <div className="featured-food-name">
               <h2>Sisig</h2>
             </div>
-            <h6 data-aos="zoom-in" data-aos-duration="1000">
+            <h6 data-aos="zoom-in" data-aos-duration="2000">
               “Served sizzling on a hot stone plate, sisig is a favorite pulutan
               (beer chow) among Filipinos. The meat is primarily chopped up
               parts of the pigs’ face — in the Philippines, no cut of the animal
@@ -52,21 +48,17 @@ const FeaturedDish = () => {
             <div className="featured-food-name">
               <h2>Rice Bowls</h2>
             </div>
-            <h6 data-aos="zoom-in" data-aos-duration="1000">
+            <h6>
               “Rice bowls have been a staple in Asia for decades, and they fit
               into the way Americans eat perfectly,” says Jason Kessler of
               FlyandDine.com. “Lots of flavors mixed together in a convenient
               format.”
             </h6>
           </Col>
-          <Col
-            md={6}
-            className="foodImg"
-            xs={(12, { order: "first" })}
-            data-aos="fade-left"
-            data-aos-duration="1000"
-          >
-            <Image src={F1} objectPosition="center" alt="dish" />
+          <Col md={6} className="foodImg" xs={(12, { order: "first" })}>
+            <div data-aos="fade-left">
+              <Image src={F1} objectPosition="center" alt="dish" />
+            </div>
             <div className="options">
               <div className="order">
                 <p>P200</p>

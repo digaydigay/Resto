@@ -68,6 +68,7 @@ h3 {
         text-align: center;
         color: $secondary;
         padding: 7px 0;
+        cursor: pointer;
 
         &:hover {
           color: $primary;
@@ -104,6 +105,7 @@ h3 {
     overflow: hidden;
     position: relative;
     transition: all ease-in 300ms;
+    cursor: pointer;
     .line {
       position: relative;
       width: 100%;
@@ -164,7 +166,7 @@ h3 {
     @media screen and (max-width: 780px) {
       position: absolute;
       height: auto;
-      transform: translateY(80%);
+      transform: translateY(120px);
       display: none;
       flex-direction: column;
       background: $secondary;
@@ -174,6 +176,10 @@ h3 {
       background: white;
       color: $secondary;
       animation: navs 500ms linear 1;
+
+      li {
+        padding: 5px 0;
+      }
     }
   }
   .ul-mobile {
@@ -184,12 +190,12 @@ h3 {
   @keyframes navs {
     0% {
       opacity: 0;
-      transform: translateY(60%);
+      transform: translateY(60px);
     }
 
     100% {
       opacity: 1;
-      transform: translateY(80%);
+      transform: translateY(120px);
     }
   }
   li {

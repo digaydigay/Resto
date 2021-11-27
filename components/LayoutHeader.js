@@ -3,11 +3,15 @@ import React, { useState, useEffect, useRef } from "react";
 import resto from "../public/assets/resto.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { signin, createaccount } from "../redux/reducer/showAuthForm";
+import { useSelector, useDispatch } from "react-redux";
 
 const LayoutHeader = ({}) => {
   const Router = useRouter();
   const [ulMobile, setUlMobile] = useState(false);
   const [headBg, setHeadBg] = useState(false);
+  const [showAuth, setShowAuth] = useState();
+  const dispatch = useDispatch();
 
   const Active = (e) => {
     const { innerText } = e.target;
@@ -15,6 +19,11 @@ const LayoutHeader = ({}) => {
       `/${innerText.toLowerCase() === "home" ? "" : innerText.toLowerCase()}`
     );
     setUlMobile(!ulMobile);
+  };
+
+  const onShowAuth = (e) => {
+    const { innerText } = e.target;
+    setShowAuth(innerText.toLowerCase().split(" ").join(""));
   };
 
   useEffect(() => {
@@ -38,8 +47,8 @@ const LayoutHeader = ({}) => {
         </div>
         <h3>esto</h3>
         <div className="header_nav">
-          <div className="bar">
-            <i className="fas fa-bars" onClick={onSetUlmobile}></i>
+          <div className={`bar ${ulMobile && "barX"}`} onClick={onSetUlmobile}>
+            <div className="line"></div>
           </div>
           <ul className={`${ulMobile && "ul-mobile"}`}>
             <li
@@ -69,9 +78,16 @@ const LayoutHeader = ({}) => {
             </li>
           </ul>
         </div>
-
+        <div className="cart">
+          <i className="fas fa-shopping-cart"></i>
+        </div>
         <div className="user">
           <i className="fas fa-user"></i>
+
+          <ul className="user-nav">
+            <li onClick={() => dispatch(signin())}>sign in</li>
+            <li onClick={() => dispatch(createaccount())}>Create Account</li>
+          </ul>
         </div>
       </div>
     </div>

@@ -1,8 +1,10 @@
 import "../styles/globals.scss";
-import Layout from "../components/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
 import Script from "next/script";
+import { Provider } from "react-redux";
+import store from "../redux/store";
+import Layout from "../components/Layout";
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -15,10 +17,11 @@ function MyApp({ Component, pageProps }) {
         src="https://kit.fontawesome.com/fe2e019d14.js"
         crossOrigin="anonymous"
       ></Script>
-
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
     </>
   );
 }

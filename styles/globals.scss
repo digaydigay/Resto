@@ -36,3 +36,16 @@ ul {
 @import "./footer.scss";
 @import "./contacts.scss";
 @import "./about.scss";
+@import "./signin.scss";
+@import "./signup.scss";
+
+@keyframes showforms {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

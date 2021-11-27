@@ -16,6 +16,7 @@ export const showAuthFormSlice = createSlice({
     },
     cancel: (state) => {
       state.init = "none";
+      console.log(state.init);
     },
   },
 });

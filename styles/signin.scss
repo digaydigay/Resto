@@ -14,13 +14,21 @@
   z-index: 1000;
   visibility: hidden;
 
-  form {
+  .form-wrapper {
+    overflow: scroll;
+    overflow-x: hidden;
     width: 500px;
     max-width: 500px;
-    min-height: 200px;
-    background: $secondary;
+    max-height: 100vh;
     padding: 5px 10px;
+    background: $secondary;
+    margin: 10px 0;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
+  form {
     h2 {
       color: $textNdark;
       text-align: center;
@@ -44,11 +52,15 @@
           box-shadow: 0 0 3px $primary;
         }
       }
+      .form-error {
+        color: $primary;
+        font-size: 0.9rem;
+      }
     }
     .actions {
       display: flex;
       justify-content: flex-end;
-      margin-bottom: 10px;
+      margin: 20px 0;
 
       button {
         border: none;
@@ -62,7 +74,22 @@
         }
       }
     }
+    .reminder {
+      color: $textNdark;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
+      p:nth-child(2) {
+        margin-left: 5px;
+        border-bottom: 0.8px solid white;
+        cursor: pointer;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
     .social_auth {
       border-top: 1px dashed $primary;
       display: flex;
@@ -92,7 +119,7 @@
 .signin-show {
   visibility: unset;
 
-  form {
+  .form-wrapper {
     animation: showforms 500ms ease-in 1;
   }
 }

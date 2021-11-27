@@ -1,35 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
 import F1 from "../../public/assets/featured1.jpg";
 import F2 from "../../public/assets/featured2.jpg";
-import AOS from "aos";
 
-const FeaturedDish = (c) => {
-  useEffect(() => {
-    AOS.init();
-  }, [c]);
+const FeaturedDish = () => {
   return (
     <div className="featured-food">
       <div className="featured-food-title">
         <h1>Featured Dishes</h1>
       </div>
       <Container fluid>
-        <Row
-          className="mb-5"
-          data-aos="flip-left"
-          data-aos-delay="100"
-          data-aos-anchor=".example-selector"
-        >
-          <Col md={6} xs={12} className="foodImg">
-            <Image
-              src={F2}
-              objectPosition="center"
-              alt="dish"
-              data-aos="zoom-in"
-              data-aos-anchor-placement="top-center"
-              data-aos-duration="600"
-            />
+        <Row>
+          <Col
+            md={6}
+            xs={12}
+            className="foodImg"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <Image src={F2} objectPosition="center" alt="dish" />
             <div className="options">
               <div className="order">
                 <p>P200</p>
@@ -43,7 +33,7 @@ const FeaturedDish = (c) => {
             <div className="featured-food-name">
               <h2>Sisig</h2>
             </div>
-            <h6>
+            <h6 data-aos="zoom-in" data-aos-duration="1000">
               “Served sizzling on a hot stone plate, sisig is a favorite pulutan
               (beer chow) among Filipinos. The meat is primarily chopped up
               parts of the pigs’ face — in the Philippines, no cut of the animal
@@ -62,14 +52,20 @@ const FeaturedDish = (c) => {
             <div className="featured-food-name">
               <h2>Rice Bowls</h2>
             </div>
-            <h6>
+            <h6 data-aos="zoom-in" data-aos-duration="1000">
               “Rice bowls have been a staple in Asia for decades, and they fit
               into the way Americans eat perfectly,” says Jason Kessler of
               FlyandDine.com. “Lots of flavors mixed together in a convenient
               format.”
             </h6>
           </Col>
-          <Col md={6} className="foodImg" xs={(12, { order: "first" })}>
+          <Col
+            md={6}
+            className="foodImg"
+            xs={(12, { order: "first" })}
+            data-aos="fade-left"
+            data-aos-duration="1000"
+          >
             <Image src={F1} objectPosition="center" alt="dish" />
             <div className="options">
               <div className="order">

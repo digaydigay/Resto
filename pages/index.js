@@ -2,6 +2,7 @@ import Head from "next/head";
 import Script from "next/script";
 import Banner from "../components/Home/banner";
 import FeaturedDish from "../components/Home/featureddish";
+import SmallBanner from "../components/Home/smallbanner";
 import Testimonial from "../components/Home/testimonial";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <div className="home">
         <Banner />
         <FeaturedDish />
+        <SmallBanner />
         <Testimonial />
       </div>
     </div>

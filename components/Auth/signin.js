@@ -38,9 +38,9 @@ export default function Signin() {
                   placeholder="Email Address..."
                   name="email"
                 />
-                <div className="form-error">
-                  {errors.email && touched.email && errors.email}
-                </div>
+              </div>
+              <div className="form-error">
+                {errors.email && touched.email && errors.email}
               </div>
               <div className="input-group">
                 <label>Password</label>
@@ -62,9 +62,9 @@ export default function Signin() {
                     fontSize: "20px",
                   }}
                 ></i>
-                <div className="form-error">
-                  {errors.password && touched.password && errors.password}
-                </div>
+              </div>
+              <div className="form-error">
+                {errors.password && touched.password && errors.password}
               </div>
               <div className="actions">
                 <button type="submit">Sign In</button>

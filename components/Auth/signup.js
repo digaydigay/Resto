@@ -20,6 +20,10 @@ export default function Signup() {
     confirmPassword: "",
   };
   const validate = Yup.object({
+    name: Yup.string()
+      .required("your name is required")
+      .min(3, "name must be 3-25 character")
+      .max(25, "name must be 3-25 character"),
     email: Yup.string()
       .email("invalid email address")
       .required("email is required in resto"),
@@ -47,9 +51,9 @@ export default function Signup() {
               <div className="input-group">
                 <label>Name</label>
                 <Field type="text" placeholder="your name..." name="name" />
-                <div className="form-error">
-                  {errors.name && touched.name && errors.name}
-                </div>
+              </div>
+              <div className="form-error">
+                {errors.name && touched.name && errors.name}
               </div>
               <div className="input-group">
                 <label>Email</label>
@@ -58,11 +62,10 @@ export default function Signup() {
                   placeholder="Email Address..."
                   name="email"
                 />
-                <div className="form-error">
-                  {errors.email && touched.email && errors.email}
-                </div>
               </div>
-
+              <div className="form-error">
+                {errors.email && touched.email && errors.email}
+              </div>
               <div className="input-group">
                 <label>Password</label>
                 <Field
@@ -83,9 +86,9 @@ export default function Signup() {
                     fontSize: "20px",
                   }}
                 ></i>
-                <div className="form-error">
-                  {errors.password && touched.password && errors.password}
-                </div>
+              </div>
+              <div className="form-error">
+                {errors.password && touched.password && errors.password}
               </div>
               <div className="input-group">
                 <label>Confirm Password</label>
@@ -94,11 +97,11 @@ export default function Signup() {
                   placeholder="Confirm Password..."
                   name="confirmPassword"
                 />
-                <div className="form-error">
-                  {errors.confirmPassword &&
-                    touched.confirmPassword &&
-                    errors.confirmPassword}
-                </div>
+              </div>
+              <div className="form-error">
+                {errors.confirmPassword &&
+                  touched.confirmPassword &&
+                  errors.confirmPassword}
               </div>
               <div className="actions">
                 <button type="submit">Sign up</button>

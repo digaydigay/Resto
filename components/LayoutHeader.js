@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import resto from "../public/assets/resto.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { signin, createaccount } from "../redux/reducer/showAuthForm";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const LayoutHeader = ({}) => {
   const Router = useRouter();
   const [ulMobile, setUlMobile] = useState(false);
   const [headBg, setHeadBg] = useState(false);
-  const [showAuth, setShowAuth] = useState();
   const dispatch = useDispatch();
 
   const Active = (e) => {
@@ -19,11 +18,6 @@ const LayoutHeader = ({}) => {
       `/${innerText.toLowerCase() === "home" ? "" : innerText.toLowerCase()}`
     );
     setUlMobile(!ulMobile);
-  };
-
-  const onShowAuth = (e) => {
-    const { innerText } = e.target;
-    setShowAuth(innerText.toLowerCase().split(" ").join(""));
   };
 
   useEffect(() => {
@@ -76,6 +70,7 @@ const LayoutHeader = ({}) => {
             >
               About
             </li>
+            <li>Privacy {`&`} Policy</li>
           </ul>
         </div>
         <div className="cart">

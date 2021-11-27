@@ -5,7 +5,14 @@ import Script from "next/script";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 import Layout from "../components/Layout";
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+
+import AOS from "aos";
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
     <>
       <Head>

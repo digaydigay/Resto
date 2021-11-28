@@ -17,14 +17,14 @@ export default function Home() {
         crossOrigin="anonymous"
       ></Script>
       <div className="menus">
-        <div className="bg">
-          <Image
-            src={bg}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-          />
-        </div>
+        <Image
+          className="bg"
+          src={bg}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+        />
+
         <div className="head"></div>
         <div className="search">
           <form>

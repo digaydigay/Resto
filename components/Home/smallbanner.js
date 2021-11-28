@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import smallbanner from "../../public/assets/smallbanner.jpg";
 export default function SmallBanner() {
   return (
     <div className="smallbanner">

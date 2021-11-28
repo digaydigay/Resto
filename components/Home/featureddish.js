@@ -13,7 +13,7 @@ const FeaturedDish = () => {
       <Container fluid>
         <Row>
           <Col md={6} xs={12} className="foodImg">
-            <div data-aos="fade-right">
+            <div data-aos="fade-right" data-aos-duration="1000">
               <Image src={F2} objectPosition="center" alt="dish" />
             </div>
             <div className="options">
@@ -29,7 +29,7 @@ const FeaturedDish = () => {
             <div className="featured-food-name">
               <h2>Sisig</h2>
             </div>
-            <h6 data-aos="zoom-in" data-aos-duration="2000">
+            <h6 data-aos="zoom-in" data-aos-duration="1000">
               “Served sizzling on a hot stone plate, sisig is a favorite pulutan
               (beer chow) among Filipinos. The meat is primarily chopped up
               parts of the pigs’ face — in the Philippines, no cut of the animal
@@ -48,7 +48,7 @@ const FeaturedDish = () => {
             <div className="featured-food-name">
               <h2>Rice Bowls</h2>
             </div>
-            <h6>
+            <h6 data-aos="zoom-in" data-aos-duration="1000">
               “Rice bowls have been a staple in Asia for decades, and they fit
               into the way Americans eat perfectly,” says Jason Kessler of
               FlyandDine.com. “Lots of flavors mixed together in a convenient
@@ -56,7 +56,7 @@ const FeaturedDish = () => {
             </h6>
           </Col>
           <Col md={6} className="foodImg" xs={(12, { order: "first" })}>
-            <div data-aos="fade-left">
+            <div data-aos="fade-left" data-aos-duration="1000">
               <Image src={F1} objectPosition="center" alt="dish" />
             </div>
             <div className="options">

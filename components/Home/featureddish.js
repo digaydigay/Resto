@@ -21,7 +21,6 @@ const FeaturedDish = () => {
                 <p>P200</p>
                 <button>Place Order</button>
               </div>
-
               <div className="detail">Details</div>
             </div>
           </Col>

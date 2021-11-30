@@ -5,7 +5,6 @@ import LayoutFooter from "./LayoutFooter";
 import LayoutHeader from "./LayoutHeader";
 import Signin from "./Auth/signin";
 import Signup from "./Auth/signup";
-import { Provider } from "react-redux";
 
 const Layout = ({ children }) => {
   return (

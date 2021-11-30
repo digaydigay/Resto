@@ -19,6 +19,7 @@ export default function Home() {
       ></Script>
       <div className="home">
         <Banner />
+
         <FeaturedDish />
         <SmallBanner />
         <Testimonial />

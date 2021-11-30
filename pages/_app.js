@@ -7,12 +7,12 @@ import store from "../redux/store";
 import Layout from "../components/Layout";
 import { useEffect } from "react";
 import "aos/dist/aos.css";
-
 import AOS from "aos";
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     AOS.init();
   });
+
   return (
     <>
       <Head>
@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }) {
         src="https://kit.fontawesome.com/fe2e019d14.js"
         crossOrigin="anonymous"
       ></Script>
+
       <Provider store={store}>
         <Layout>
           <Component {...pageProps} />

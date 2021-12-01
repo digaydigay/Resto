@@ -8,10 +8,13 @@ import Layout from "../components/Layout";
 import { useEffect } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
-function MyApp({ Component, pageProps }) {
+import { SessionProvider } from "next-auth/client";
+
+function MyApp({ Component, Props }) {
   useEffect(() => {
     AOS.init();
   });
+  console.log(SessionProvider);
 
   return (
     <>
@@ -27,7 +30,7 @@ function MyApp({ Component, pageProps }) {
 
       <Provider store={store}>
         <Layout>
-          <Component {...pageProps} />
+          <Component {...Props} />
         </Layout>
       </Provider>
     </>

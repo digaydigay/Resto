@@ -4,16 +4,9 @@ import { Card, Row, Col } from "react-bootstrap";
 import bg from "../public/assets/banner2.jpg";
 import Image from "next/image";
 import M1 from "../public/assets/featured1.jpg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
-  const [id, setId] = useState();
-  console.log(id);
-  useEffect(async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-    const data = await res.json();
-    setId(data);
-  }, []);
   return (
     <div>
       <Head>

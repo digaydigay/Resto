@@ -2,19 +2,17 @@ import "../styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
 import Script from "next/script";
-import { Provider } from "react-redux";
-import store from "../redux/store";
+import { AuthProvider } from "../context/reducers/AuthProvider";
 import Layout from "../components/Layout";
 import { useEffect } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
-import { SessionProvider } from "next-auth/client";
+import { auth } from "../firebase";
 
 function MyApp({ Component, Props }) {
   useEffect(() => {
     AOS.init();
   });
-  console.log(SessionProvider);
 
   return (
     <>
@@ -28,11 +26,11 @@ function MyApp({ Component, Props }) {
         crossOrigin="anonymous"
       ></Script>
 
-      <Provider store={store}>
+      <AuthProvider>
         <Layout>
           <Component {...Props} />
         </Layout>
-      </Provider>
+      </AuthProvider>
     </>
   );
 }

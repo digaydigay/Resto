@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { cancel, signin } from "../../redux/reducer/showAuthForm";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import { useAuthContext } from "../../context/reducers/AuthProvider";
+import { ActionForm } from "./actionform";
 
 export default function Signup() {
-  const dispatch = useDispatch();
-  const init = useSelector((state) => state.showAuthForm.init);
+  const { isAuthModal, showsignupmodal, hidemodal } = useAuthContext();
   const [password, setPassword] = useState(false);
+  const { facebookprovider, googleprovider, onSignUp } = ActionForm();
 
   const See = () => {
     setPassword(!password);
@@ -42,10 +42,12 @@ export default function Signup() {
   });
 
   return (
-    <div className={`signup ${init === "createaccount" && "signup-show"}`}>
+    <div
+      className={`signup ${isAuthModal === "createaccount" && "signup-show"}`}
+    >
       <div className="form-wrapper">
         <Formik initialValues={initialValues} validationSchema={validate}>
-          {({ errors, touched }) => (
+          {({ errors, touched, values }) => (
             <Form>
               <h2>Sign Up</h2>
               <div className="input-group">
@@ -104,18 +106,23 @@ export default function Signup() {
                   errors.confirmPassword}
               </div>
               <div className="actions">
-                <button type="submit">Sign up</button>
-                <button type="button" onClick={() => dispatch(cancel())}>
+                <button
+                  type="submit"
+                  onClick={() => onSignUp(values.email, values.password)}
+                >
+                  Sign up
+                </button>
+                <button type="button" onClick={() => hidemodal()}>
                   cancel
                 </button>
               </div>
               <div className="reminder">
                 <p>already have an account?</p>
-                <p onClick={() => dispatch(signin())}>Sign in</p>
+                <p>Sign in</p>
               </div>
               <div className="social_auth">
-                <i className="fab fa-facebook"></i>
-                <i className="fab fa-google"></i>
+                <i className="fab fa-facebook" onClick={facebookprovider}></i>
+                <i className="fab fa-google" onClick={googleprovider}></i>
               </div>
             </Form>
           )}

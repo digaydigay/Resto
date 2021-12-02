@@ -207,6 +207,8 @@
     height: 300px;
     position: relative;
     background: rgba(12, 12, 12, 0.5);
+    clip-path: polygon(7% 0, 100% 1%, 91% 100%, 0% 100%);
+
     .bg {
       z-index: -1;
     }

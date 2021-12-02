@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import resto from "../public/assets/resto.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { signin, createaccount } from "../redux/reducer/showAuthForm";
-import { useDispatch } from "react-redux";
+import { useAuthContext } from "../context/reducers/AuthProvider";
 
 const LayoutHeader = ({}) => {
   const Router = useRouter();
   const [ulMobile, setUlMobile] = useState(false);
   const [headBg, setHeadBg] = useState(false);
-  const dispatch = useDispatch();
-
+  const { showsigninmodal, showsignupmodal } = useAuthContext();
   const Active = (e) => {
     const { innerText } = e.target;
     Router.push(
@@ -28,7 +26,7 @@ const LayoutHeader = ({}) => {
         setHeadBg(false);
       }
     });
-  });
+  }, []);
   const onSetUlmobile = () => {
     setUlMobile(!ulMobile);
   };
@@ -80,8 +78,8 @@ const LayoutHeader = ({}) => {
           <i className="fas fa-user"></i>
 
           <ul className="user-nav">
-            <li onClick={() => dispatch(signin())}>sign in</li>
-            <li onClick={() => dispatch(createaccount())}>Create Account</li>
+            <li onClick={() => showsigninmodal()}>sign in</li>
+            <li onClick={() => showsignupmodal()}>Create Account</li>
           </ul>
         </div>
       </div>

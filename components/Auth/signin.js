@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { cancel } from "../../redux/reducer/showAuthForm";
-import { createaccount } from "../../redux/reducer/showAuthForm";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import { useAuthContext } from "../../context/reducers/AuthProvider";
 export default function Signin() {
-  const init = useSelector((state) => state.showAuthForm.init);
-  const dispatch = useDispatch();
+  const { isAuthModal, hidemodal } = useAuthContext();
   const [password, setPassword] = useState(false);
 
   const See = () => {
@@ -25,7 +22,7 @@ export default function Signin() {
   });
 
   return (
-    <div className={`signin ${init === "signin" && "signin-show"}`}>
+    <div className={`signin ${isAuthModal === "signin" && "signin-show"}`}>
       <div className="form-wrapper">
         <Formik initialValues={initialValues} validationSchema={validate}>
           {({ errors, touched }) => (
@@ -68,18 +65,13 @@ export default function Signin() {
               </div>
               <div className="actions">
                 <button type="submit">Sign In</button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    dispatch(cancel());
-                  }}
-                >
+                <button type="button" onClick={() => hidemodal()}>
                   cancel
                 </button>
               </div>
               <div className="reminder">
                 <p>Need an acount?</p>
-                <p onClick={() => dispatch(createaccount())}>Sign up</p>
+                <p>Sign up</p>
               </div>
               <div className="social_auth">
                 <i className="fab fa-facebook"></i>

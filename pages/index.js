@@ -4,10 +4,7 @@ import Banner from "../components/Home/banner";
 import FeaturedDish from "../components/Home/featureddish";
 import SmallBanner from "../components/Home/smallbanner";
 import Testimonial from "../components/Home/testimonial";
-import { useSession, signIn, signOut } from "next-auth/client";
 export default function Home() {
-  const [session, loading] = useSession();
-  console.log(session);
   return (
     <div>
       <Head>

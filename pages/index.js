@@ -4,6 +4,7 @@ import Banner from "../components/Home/banner";
 import FeaturedDish from "../components/Home/featureddish";
 import SmallBanner from "../components/Home/smallbanner";
 import Testimonial from "../components/Home/testimonial";
+
 export default function Home() {
   return (
     <div>

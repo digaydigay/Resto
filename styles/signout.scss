@@ -1,0 +1,59 @@
+@import "./variable.scss";
+.signout {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100vh;
+  background: rgba(51, 51, 51, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  z-index: 1000;
+  visibility: hidden;
+
+  > div {
+    background: $textNdark;
+    max-width: 300px;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+
+    h3 {
+      color: $secondary;
+      font-size: 1.5rem;
+    }
+
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        border: none;
+        outline: none;
+        margin-right: 10px;
+        padding: 5px 10px;
+        background: $secondary;
+        color: white;
+        border-radius: 2px;
+        &:hover {
+          background: $primary;
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+.signout-show {
+  visibility: visible;
+
+  > div {
+    animation: showforms 500ms ease-in 1;
+  }
+}

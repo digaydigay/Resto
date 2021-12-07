@@ -1,5 +1,7 @@
 import Firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
+import "firebase/storage";
 
 const FirebaseCredentials = {
   apiKey: "AIzaSyDl_MwkUYLX8QqlTPBE-gvf-Sby5MkLNe8",
@@ -17,6 +19,7 @@ if (!Firebase.apps.length) {
   Firebase.initializeApp(FirebaseCredentials);
 }
 export const Google = new Firebase.auth.GoogleAuthProvider();
-export const Facebook = new Firebase.auth.FacebookAuthProvider();
 export const auth = Firebase.auth();
+export const db = Firebase.firestore();
+export const storage = Firebase.storage();
 export default Firebase;

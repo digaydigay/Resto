@@ -5,6 +5,8 @@ import LayoutFooter from "./LayoutFooter";
 import LayoutHeader from "./LayoutHeader";
 import Signin from "./Auth/signin";
 import Signup from "./Auth/signup";
+import Signout from "./Auth/signout";
+import Loader from "./Loader";
 
 const Layout = ({ children }) => {
   return (
@@ -13,6 +15,8 @@ const Layout = ({ children }) => {
       {children}
       <Signin />
       <Signup />
+      <Signout />
+      <Loader />
       <LayoutFooter />
     </div>
   );

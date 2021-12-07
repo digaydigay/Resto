@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { useAuthContext } from "../../context/reducers/AuthProvider";
+import { useAuthContext } from "../../context/AuthProvider";
 export default function Signin() {
   const { isAuthModal, hidemodal } = useAuthContext();
   const [password, setPassword] = useState(false);
@@ -74,7 +74,6 @@ export default function Signin() {
                 <p>Sign up</p>
               </div>
               <div className="social_auth">
-                <i className="fab fa-facebook"></i>
                 <i className="fab fa-google"></i>
               </div>
             </Form>

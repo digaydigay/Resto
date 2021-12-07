@@ -1,5 +1,6 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { auth, Facebook, Google } from "../../firebase";
+import { auth, Google } from "../firebase";
+
 const AuthContext = createContext();
 
 export const useAuthContext = () => {
@@ -9,7 +10,6 @@ export const useAuthContext = () => {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [isAuthModal, setIsAuthModal] = useState("none");
-  console.log(currentUser);
 
   const signin = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
@@ -23,20 +23,24 @@ export const AuthProvider = ({ children }) => {
   const showsignupmodal = () => {
     setIsAuthModal("createaccount");
   };
+  const showsignoutmodal = () => {
+    setIsAuthModal("signout");
+  };
   const hidemodal = () => {
     setIsAuthModal("none");
   };
-  const facebook = () => {
-    auth.signInWithPopup(Facebook);
-  };
-  const google = () => {
-    auth.signInWithPopup(Google);
-  };
 
+  const google = () => {
+    return auth.signInWithPopup(Google);
+  };
+  const signout = () => {
+    return auth.signOut();
+  };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
+
     return unsubscribe;
   }, []);
 
@@ -46,11 +50,12 @@ export const AuthProvider = ({ children }) => {
     isAuthModal,
     setIsAuthModal,
     showsigninmodal,
+    showsignoutmodal,
     signin,
     signup,
     showsignupmodal,
     hidemodal,
-    facebook,
+    signout,
     google,
   };
 

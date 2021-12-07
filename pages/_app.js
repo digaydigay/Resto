@@ -2,18 +2,25 @@ import "../styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
 import Script from "next/script";
-import { AuthProvider } from "../context/reducers/AuthProvider";
+import { AuthProvider } from "../context/AuthProvider";
 import Layout from "../components/Layout";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
-import { auth } from "../firebase";
+import { LoaderContext, useLoader } from "../context/loader";
 
 function MyApp({ Component, Props }) {
   useEffect(() => {
     AOS.init();
   });
+  const [isLoader, setIsLoader] = useState(false);
 
+  useEffect(() => {
+    setIsLoader(true);
+    setTimeout(() => {
+      setIsLoader(false);
+    }, 2000);
+  }, []);
   return (
     <>
       <Head>
@@ -25,12 +32,13 @@ function MyApp({ Component, Props }) {
         src="https://kit.fontawesome.com/fe2e019d14.js"
         crossOrigin="anonymous"
       ></Script>
-
-      <AuthProvider>
-        <Layout>
-          <Component {...Props} />
-        </Layout>
-      </AuthProvider>
+      <LoaderContext.Provider value={{ isLoader, setIsLoader }}>
+        <AuthProvider>
+          <Layout>
+            <Component {...Props} />
+          </Layout>
+        </AuthProvider>
+      </LoaderContext.Provider>
     </>
   );
 }

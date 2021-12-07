@@ -3,13 +3,16 @@ import React, { useState, useEffect, useContext } from "react";
 import resto from "../public/assets/resto.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useAuthContext } from "../context/reducers/AuthProvider";
+import { useAuthContext } from "../context/AuthProvider";
 
 const LayoutHeader = ({}) => {
   const Router = useRouter();
   const [ulMobile, setUlMobile] = useState(false);
   const [headBg, setHeadBg] = useState(false);
-  const { showsigninmodal, showsignupmodal } = useAuthContext();
+
+  const { showsigninmodal, showsignupmodal, currentUser, showsignoutmodal } =
+    useAuthContext();
+  const [userCookie, setUserCookie] = useState();
   const Active = (e) => {
     const { innerText } = e.target;
     Router.push(
@@ -18,6 +21,9 @@ const LayoutHeader = ({}) => {
     setUlMobile(!ulMobile);
   };
 
+  const onSetUlmobile = () => {
+    setUlMobile(!ulMobile);
+  };
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
@@ -27,9 +33,6 @@ const LayoutHeader = ({}) => {
       }
     });
   }, []);
-  const onSetUlmobile = () => {
-    setUlMobile(!ulMobile);
-  };
 
   return (
     <div className={`header ${headBg && "headBg"}`}>
@@ -71,15 +74,31 @@ const LayoutHeader = ({}) => {
             <li>Privacy {`&`} Policy</li>
           </ul>
         </div>
-        <div className="cart">
+        <div
+          className="cart"
+          onClick={() => {
+            Router.push(`cart/${currentUser && currentUser.uid}`);
+          }}
+        >
           <i className="fas fa-shopping-cart"></i>
         </div>
         <div className="user">
           <i className="fas fa-user"></i>
 
           <ul className="user-nav">
-            <li onClick={() => showsigninmodal()}>sign in</li>
-            <li onClick={() => showsignupmodal()}>Create Account</li>
+            {!currentUser && (
+              <>
+                <li onClick={() => showsigninmodal()}>sign in</li>
+                <li onClick={() => showsignupmodal()}>Create Account</li>
+              </>
+            )}
+            {currentUser && (
+              <>
+                <li>My Cart</li>
+                <li>{currentUser.displayName}</li>
+                <li onClick={() => showsignoutmodal()}>Sign out</li>
+              </>
+            )}
           </ul>
         </div>
       </div>

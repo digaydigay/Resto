@@ -19,7 +19,7 @@ const FeaturedDish = () => {
             <div className="options">
               <div className="order">
                 <p>P200</p>
-                <button>Place Order</button>
+                <button> Add to Cart</button>
               </div>
               <div className="detail">Details</div>
             </div>
@@ -61,7 +61,7 @@ const FeaturedDish = () => {
             <div className="options">
               <div className="order">
                 <p>P200</p>
-                <button>Place Order</button>
+                <button>Add to Cart</button>
               </div>
 
               <div className="detail">Details</div>

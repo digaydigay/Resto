@@ -4,9 +4,14 @@ import { Card, Row, Col } from "react-bootstrap";
 import bg from "../public/assets/banner2.jpg";
 import Image from "next/image";
 import M1 from "../public/assets/featured1.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthContext } from "../context/AuthProvider";
 
+// component
+import Formaddmenu from "../components/menus/formaddmenu";
 export default function Home() {
+  const { currentUser } = useAuthContext();
+  console.log(currentUser);
   return (
     <div>
       <Head>
@@ -19,13 +24,14 @@ export default function Home() {
         crossOrigin="anonymous"
       ></Script>
       <div className="menus">
-        <Image
-          className="bg"
-          src={bg}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-        />
+        <div className="bg">
+          <Image
+            src={bg}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
 
         <div className="head"></div>
         <div className="search">
@@ -54,7 +60,7 @@ export default function Home() {
                 <Card.Title>Bowl Rice</Card.Title>
                 <Card.Footer>
                   <p>P230</p>
-                  <button>Order</button>
+                  <button>Add to Cart</button>
                 </Card.Footer>
                 <Card.Footer>
                   <Card.Text>
@@ -78,7 +84,7 @@ export default function Home() {
                 <Card.Title>Bowl Rice</Card.Title>
                 <Card.Footer>
                   <p>P230</p>
-                  <button>Order</button>
+                  <button>Add to Cart</button>
                 </Card.Footer>
                 <Card.Footer>
                   <Card.Text>
@@ -102,7 +108,7 @@ export default function Home() {
                 <Card.Title>Bowl Rice</Card.Title>
                 <Card.Footer>
                   <p>P230</p>
-                  <button>Order</button>
+                  <button>Add to Cart</button>
                 </Card.Footer>
                 <Card.Footer>
                   <Card.Text>
@@ -126,7 +132,7 @@ export default function Home() {
                 <Card.Title>Bowl Rice</Card.Title>
                 <Card.Footer>
                   <p>P230</p>
-                  <button>Order</button>
+                  <button>Add to Cart</button>
                 </Card.Footer>
                 <Card.Footer>
                   <Card.Text>
@@ -150,7 +156,7 @@ export default function Home() {
                 <Card.Title>Bowl Rice</Card.Title>
                 <Card.Footer>
                   <p>P230</p>
-                  <button>Order</button>
+                  <button>Add to Cart</button>
                 </Card.Footer>
                 <Card.Footer>
                   <Card.Text>
@@ -174,7 +180,7 @@ export default function Home() {
                 <Card.Title>Bowl Rice</Card.Title>
                 <Card.Footer>
                   <p>P230</p>
-                  <button>Order</button>
+                  <button>Add to Cart</button>
                 </Card.Footer>
                 <Card.Footer>
                   <Card.Text>
@@ -196,7 +202,7 @@ export default function Home() {
                 <Card.Title>Bowl Rice</Card.Title>
                 <Card.Footer>
                   <p>P230</p>
-                  <button>Order</button>
+                  <button>Add to Cart</button>
                 </Card.Footer>
                 <Card.Footer>
                   <Card.Text>
@@ -207,6 +213,9 @@ export default function Home() {
             </Col>
           </Row>
         </div>
+        {currentUser && currentUser.email === "jonathan.digay1@gmail.com" && (
+          <Formaddmenu />
+        )}
       </div>
     </div>
   );

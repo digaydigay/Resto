@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { useAuthContext } from "../../context/reducers/AuthProvider";
+import { useAuthContext } from "../../context/AuthProvider";
 import { ActionForm } from "./actionform";
 
 export default function Signup() {
   const { isAuthModal, showsignupmodal, hidemodal } = useAuthContext();
   const [password, setPassword] = useState(false);
-  const { facebookprovider, googleprovider, onSignUp } = ActionForm();
+  const { googleprovider, onSignUp } = ActionForm();
 
   const See = () => {
     setPassword(!password);
@@ -46,7 +46,11 @@ export default function Signup() {
       className={`signup ${isAuthModal === "createaccount" && "signup-show"}`}
     >
       <div className="form-wrapper">
-        <Formik initialValues={initialValues} validationSchema={validate}>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validate}
+          onSubmit={(values) => onSignUp(values.email, values.password)}
+        >
           {({ errors, touched, values }) => (
             <Form>
               <h2>Sign Up</h2>
@@ -106,12 +110,7 @@ export default function Signup() {
                   errors.confirmPassword}
               </div>
               <div className="actions">
-                <button
-                  type="submit"
-                  onClick={() => onSignUp(values.email, values.password)}
-                >
-                  Sign up
-                </button>
+                <button type="submit">Sign up</button>
                 <button type="button" onClick={() => hidemodal()}>
                   cancel
                 </button>
@@ -121,7 +120,6 @@ export default function Signup() {
                 <p>Sign in</p>
               </div>
               <div className="social_auth">
-                <i className="fab fa-facebook" onClick={facebookprovider}></i>
                 <i className="fab fa-google" onClick={googleprovider}></i>
               </div>
             </Form>

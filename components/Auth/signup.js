@@ -5,7 +5,7 @@ import { useAuthContext } from "../../context/AuthProvider";
 import { ActionForm } from "./actionform";
 
 export default function Signup() {
-  const { isAuthModal, showsignupmodal, hidemodal } = useAuthContext();
+  const { isModal, hidemodal } = useAuthContext();
   const [password, setPassword] = useState(false);
   const { googleprovider, onSignUp } = ActionForm();
 
@@ -42,9 +42,7 @@ export default function Signup() {
   });
 
   return (
-    <div
-      className={`signup ${isAuthModal === "createaccount" && "signup-show"}`}
-    >
+    <div className={`signup ${isModal === "createaccount" && "signup-show"}`}>
       <div className="form-wrapper">
         <Formik
           initialValues={initialValues}
@@ -120,7 +118,13 @@ export default function Signup() {
                 <p>Sign in</p>
               </div>
               <div className="social_auth">
-                <i className="fab fa-google" onClick={googleprovider}></i>
+                <i
+                  className="fab fa-google"
+                  onClick={() => {
+                    googleprovider();
+                    hidemodal();
+                  }}
+                ></i>
               </div>
             </Form>
           )}

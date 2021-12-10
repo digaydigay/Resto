@@ -12,7 +12,7 @@ const LayoutHeader = ({}) => {
 
   const { showsigninmodal, showsignupmodal, currentUser, showsignoutmodal } =
     useAuthContext();
-  const [userCookie, setUserCookie] = useState();
+
   const Active = (e) => {
     const { innerText } = e.target;
     Router.push(
@@ -77,7 +77,10 @@ const LayoutHeader = ({}) => {
         <div
           className="cart"
           onClick={() => {
-            Router.push(`cart/${currentUser && currentUser.uid}`);
+            if (!currentUser) {
+              return showsignupmodal();
+            }
+            Router.replace(`/cart/pending/${currentUser && currentUser.uid}`);
           }}
         >
           <i className="fas fa-shopping-cart"></i>
@@ -94,7 +97,6 @@ const LayoutHeader = ({}) => {
             )}
             {currentUser && (
               <>
-                <li>My Cart</li>
                 <li>{currentUser.displayName}</li>
                 <li onClick={() => showsignoutmodal()}>Sign out</li>
               </>

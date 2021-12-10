@@ -7,7 +7,8 @@ import Signin from "./Auth/signin";
 import Signup from "./Auth/signup";
 import Signout from "./Auth/signout";
 import Loader from "./Loader";
-
+import Formaddmenu from "./menus/formaddmenu";
+import Placeorder from "./placeorder";
 const Layout = ({ children }) => {
   return (
     <div className={layout}>
@@ -17,6 +18,8 @@ const Layout = ({ children }) => {
       <Signup />
       <Signout />
       <Loader />
+      <Formaddmenu />
+      <Placeorder />
       <LayoutFooter />
     </div>
   );

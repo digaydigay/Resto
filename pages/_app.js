@@ -8,13 +8,14 @@ import { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { LoaderContext, useLoader } from "../context/loader";
+import { OrderContext } from "../context/orderContext";
 
 function MyApp({ Component, Props }) {
   useEffect(() => {
     AOS.init();
   });
   const [isLoader, setIsLoader] = useState(false);
-
+  const [isOrder, setIsOrder] = useState();
   useEffect(() => {
     setIsLoader(true);
     setTimeout(() => {
@@ -32,13 +33,15 @@ function MyApp({ Component, Props }) {
         src="https://kit.fontawesome.com/fe2e019d14.js"
         crossOrigin="anonymous"
       ></Script>
-      <LoaderContext.Provider value={{ isLoader, setIsLoader }}>
-        <AuthProvider>
-          <Layout>
-            <Component {...Props} />
-          </Layout>
-        </AuthProvider>
-      </LoaderContext.Provider>
+      <OrderContext.Provider value={{ isOrder, setIsOrder }}>
+        <LoaderContext.Provider value={{ isLoader, setIsLoader }}>
+          <AuthProvider>
+            <Layout>
+              <Component {...Props} />
+            </Layout>
+          </AuthProvider>
+        </LoaderContext.Provider>
+      </OrderContext.Provider>
     </>
   );
 }

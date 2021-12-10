@@ -3,15 +3,24 @@ import Script from "next/script";
 import { Card, Row, Col } from "react-bootstrap";
 import bg from "../public/assets/banner2.jpg";
 import Image from "next/image";
-import M1 from "../public/assets/featured1.jpg";
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../context/AuthProvider";
-
+import { db } from "../firebase";
+import { useOrderContext } from "../context/orderContext";
 // component
-import Formaddmenu from "../components/menus/formaddmenu";
 export default function Home() {
-  const { currentUser } = useAuthContext();
-  console.log(currentUser);
+  const { showaddmenumodal, currentUser, showplaceorder } = useAuthContext();
+  const { setIsOrder } = useOrderContext();
+  const [menus, setMenus] = useState();
+  useEffect(() => {
+    const fetch = async () => {
+      await db.collection("menus").onSnapshot((snap) => {
+        setMenus(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      });
+    };
+    fetch();
+  }, []);
+
   return (
     <div>
       <Head>
@@ -33,7 +42,6 @@ export default function Home() {
           />
         </div>
 
-        <div className="head"></div>
         <div className="search">
           <form>
             <input type="search" placeholder="search dish..." />
@@ -42,180 +50,71 @@ export default function Home() {
             </button>
           </form>
         </div>
+        {currentUser && currentUser.email === "jonathan.digay1@gmail.com" && (
+          <div className="addMenuBtn">
+            <i
+              className="fas fa-plus-circle"
+              onClick={() => showaddmenumodal()}
+            ></i>
+          </div>
+        )}
 
         <div className="menus-food">
           <Row>
-            <Col
-              xs={6}
-              sm={6}
-              md={4}
-              lg={3}
-              xxl={2}
-              className="d-flex justify-content-center"
-            >
-              <Card>
-                <Card.Body>
-                  <Image src={M1} />
-                </Card.Body>
-                <Card.Title>Bowl Rice</Card.Title>
-                <Card.Footer>
-                  <p>P230</p>
-                  <button>Add to Cart</button>
-                </Card.Footer>
-                <Card.Footer>
-                  <Card.Text>
-                    <Card.Link>Details</Card.Link>
-                  </Card.Text>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col
-              xs={6}
-              sm={6}
-              md={4}
-              lg={3}
-              xxl={2}
-              className="d-flex justify-content-center"
-            >
-              <Card>
-                <Card.Body>
-                  <Image src={M1} />
-                </Card.Body>
-                <Card.Title>Bowl Rice</Card.Title>
-                <Card.Footer>
-                  <p>P230</p>
-                  <button>Add to Cart</button>
-                </Card.Footer>
-                <Card.Footer>
-                  <Card.Text>
-                    <Card.Link>Details</Card.Link>
-                  </Card.Text>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col
-              xs={6}
-              sm={6}
-              md={4}
-              lg={3}
-              xxl={2}
-              className="d-flex justify-content-center"
-            >
-              <Card>
-                <Card.Body>
-                  <Image src={M1} />
-                </Card.Body>
-                <Card.Title>Bowl Rice</Card.Title>
-                <Card.Footer>
-                  <p>P230</p>
-                  <button>Add to Cart</button>
-                </Card.Footer>
-                <Card.Footer>
-                  <Card.Text>
-                    <Card.Link>Details</Card.Link>
-                  </Card.Text>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col
-              xs={6}
-              sm={6}
-              md={4}
-              lg={3}
-              xxl={2}
-              className="d-flex justify-content-center"
-            >
-              <Card>
-                <Card.Body>
-                  <Image src={M1} />
-                </Card.Body>
-                <Card.Title>Bowl Rice</Card.Title>
-                <Card.Footer>
-                  <p>P230</p>
-                  <button>Add to Cart</button>
-                </Card.Footer>
-                <Card.Footer>
-                  <Card.Text>
-                    <Card.Link>Details</Card.Link>
-                  </Card.Text>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col
-              xs={6}
-              sm={6}
-              md={4}
-              lg={3}
-              xxl={2}
-              className="d-flex justify-content-center"
-            >
-              <Card>
-                <Card.Body>
-                  <Image src={M1} />
-                </Card.Body>
-                <Card.Title>Bowl Rice</Card.Title>
-                <Card.Footer>
-                  <p>P230</p>
-                  <button>Add to Cart</button>
-                </Card.Footer>
-                <Card.Footer>
-                  <Card.Text>
-                    <Card.Link>Details</Card.Link>
-                  </Card.Text>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col
-              xs={6}
-              sm={6}
-              md={4}
-              lg={3}
-              xxl={2}
-              className="d-flex justify-content-center"
-            >
-              <Card>
-                <Card.Body>
-                  <Image src={M1} />
-                </Card.Body>
-                <Card.Title>Bowl Rice</Card.Title>
-                <Card.Footer>
-                  <p>P230</p>
-                  <button>Add to Cart</button>
-                </Card.Footer>
-                <Card.Footer>
-                  <Card.Text>
-                    <Card.Link>Details</Card.Link>
-                  </Card.Text>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col
-              xs={6}
-              sm={6}
-              md={4}
-              lg={3}
-              xxl={2}
-              className="d-flex justify-content-center"
-            >
-              <Card>
-                <Card.Body></Card.Body>
-                <Card.Title>Bowl Rice</Card.Title>
-                <Card.Footer>
-                  <p>P230</p>
-                  <button>Add to Cart</button>
-                </Card.Footer>
-                <Card.Footer>
-                  <Card.Text>
-                    <Card.Link>Details</Card.Link>
-                  </Card.Text>
-                </Card.Footer>
-              </Card>
-            </Col>
+            {menus &&
+              menus.map((menu, index) => {
+                return (
+                  <Col
+                    xs={6}
+                    sm={6}
+                    md={4}
+                    lg={3}
+                    xxl={2}
+                    className="d-flex justify-content-center"
+                    key={index}
+                  >
+                    <Card>
+                      <Card.Body>
+                        <Image src={menu.foodPhoto} width="300" height="300" />
+                      </Card.Body>
+                      <Card.Title>{menu.foodName}</Card.Title>
+                      <Card.Footer>
+                        <p>{`P${menu.foodPrice}`}</p>
+                        <button
+                          onClick={() => {
+                            showplaceorder();
+                            setIsOrder(menu);
+                          }}
+                        >
+                          Place order
+                        </button>
+                      </Card.Footer>
+                      {currentUser &&
+                        currentUser.email == "jonathan.digay1@gmail.com" && (
+                          <button
+                            onClick={() => {
+                              const deletion = async () => {
+                                try {
+                                  await db
+                                    .collection("menus")
+                                    .doc(menu.id)
+                                    .delete();
+                                } catch (e) {
+                                  console.log(e);
+                                }
+                              };
+                              deletion();
+                            }}
+                          >
+                            Delete
+                          </button>
+                        )}
+                    </Card>
+                  </Col>
+                );
+              })}
           </Row>
         </div>
-        {currentUser && currentUser.email === "jonathan.digay1@gmail.com" && (
-          <Formaddmenu />
-        )}
       </div>
     </div>
   );

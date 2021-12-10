@@ -8,7 +8,7 @@ const FeaturedDish = () => {
   return (
     <div className="featured-food">
       <div className="featured-food-title">
-        <h1>Featured Dishes</h1>
+        <h1>Featured Today</h1>
       </div>
       <Container fluid>
         <Row>

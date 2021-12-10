@@ -9,25 +9,31 @@ export const useAuthContext = () => {
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
-  const [isAuthModal, setIsAuthModal] = useState("none");
+  const [isModal, setIsModal] = useState("none");
 
   const signin = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
   const showsigninmodal = () => {
-    setIsAuthModal("signin");
+    setIsModal("signin");
   };
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
   const showsignupmodal = () => {
-    setIsAuthModal("createaccount");
+    setIsModal("createaccount");
   };
   const showsignoutmodal = () => {
-    setIsAuthModal("signout");
+    setIsModal("signout");
+  };
+  const showaddmenumodal = () => {
+    setIsModal("addmenu");
+  };
+  const showplaceorder = () => {
+    setIsModal("placeorder");
   };
   const hidemodal = () => {
-    setIsAuthModal("none");
+    setIsModal("none");
   };
 
   const google = () => {
@@ -47,10 +53,12 @@ export const AuthProvider = ({ children }) => {
   const values = {
     currentUser,
     setCurrentUser,
-    isAuthModal,
-    setIsAuthModal,
+    isModal,
+    setIsModal,
     showsigninmodal,
     showsignoutmodal,
+    showaddmenumodal,
+    showplaceorder,
     signin,
     signup,
     showsignupmodal,

@@ -1,0 +1,128 @@
+@import "./variable.scss";
+
+.placeorder {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+
+  min-height: 100vh;
+  background: rgba(51, 51, 51, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
+  z-index: 1000;
+  visibility: hidden;
+
+  .placeorder-wrapper {
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 700px;
+    max-width: 700px;
+    max-height: 96vh;
+
+    background: white;
+    margin: 10px 0;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .exit {
+      position: absolute;
+      right: 15px;
+      top: 5px;
+      font-size: 1.3rem;
+      color: $primary;
+      cursor: pointer;
+    }
+
+    .order {
+      display: flex;
+      padding: 10px;
+
+      .orderimg {
+        position: relative;
+        background: black;
+      }
+
+      .order-description {
+        flex: 1;
+        background: rgb(218, 217, 217);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  form {
+    background: rgb(218, 217, 217);
+    padding: 10px;
+
+    .input-group {
+      min-height: 40px;
+      margin-bottom: 10px;
+
+      input {
+        height: 40px;
+        width: 100%;
+        outline: none;
+        border: none;
+        box-shadow: -2px 2px 5px 0 rgba(51, 51, 51, 0.5);
+        padding: 0 10px;
+      }
+      &:nth-child(1) {
+        width: max-content;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 20px;
+        input {
+          text-align: center;
+          outline: none;
+          border: none;
+          box-shadow: -2px 2px 5px 0 rgba(51, 51, 51, 0.5);
+          padding: 0 5px;
+        }
+        label {
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+
+    .total {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      padding: 5px 10px;
+
+      background: $primary;
+      border-radius: 50px;
+      box-shadow: -2px 0 3px 0px $secondary;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &:hover {
+        transform: translateX(-50%) scale(0.9);
+      }
+    }
+  }
+}
+
+.showplaceorder {
+  visibility: visible;
+
+  .placeorder-wrapper {
+    animation: showforms 500ms ease-in 1;
+  }
+}

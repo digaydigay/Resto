@@ -1,0 +1,112 @@
+.addmenu {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+
+  min-height: 100vh;
+  background: rgba(51, 51, 51, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
+  z-index: 1000;
+  visibility: hidden;
+
+  .form-wrapper {
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 500px;
+    background: white;
+    max-width: 500px;
+    max-height: 96vh;
+    padding: 5px 5px;
+
+    margin: 10px 0;
+    position: relative;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .exit {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      font-size: 1.3rem;
+      color: $primary;
+      cursor: pointer;
+    }
+
+    form {
+      h3 {
+        color: $secondary;
+        text-align: center;
+      }
+
+      .input-group {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+        input {
+          width: 100%;
+          outline: none;
+          border: none;
+          padding: 0 10px;
+          height: 40px;
+          box-shadow: -2px 2px 5px 0 rgba(51, 51, 51, 0.5);
+        }
+        textarea {
+          width: 100%;
+
+          outline: none;
+          border: none;
+          padding: 0 10px;
+          min-height: 100px;
+          box-shadow: -2px 0 3px 0px $secondary;
+        }
+        label {
+          background: $primary;
+
+          box-shadow: -2px 0 3px 0px $secondary;
+          padding: 5px 10px;
+          cursor: pointer;
+        }
+      }
+
+      .image-preveiw {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .submit {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          border: none;
+          outline: none;
+          padding: 5px 10px;
+
+          background: $primary;
+          border-radius: 50px;
+          box-shadow: -2px 0 3px 0px $secondary;
+
+          &:hover {
+            transform: scale(0.9);
+          }
+        }
+      }
+    }
+  }
+}
+.showaddmenu {
+  visibility: visible;
+  overflow-x: hidden;
+  .form-wrapper {
+    animation: showforms 500ms ease-in 1;
+    overflow-x: hidden;
+  }
+}

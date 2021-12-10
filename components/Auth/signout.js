@@ -3,10 +3,10 @@ import { useAuthContext } from "../../context/AuthProvider";
 import { ActionForm } from "./actionform";
 
 export default function Signup() {
-  const { isAuthModal, hidemodal, signout } = useAuthContext();
+  const { isModal, hidemodal, signout } = useAuthContext();
   const { onsignout } = ActionForm();
   return (
-    <div className={`signout ${isAuthModal === "signout" && "signout-show"}`}>
+    <div className={`signout ${isModal === "signout" && "signout-show"}`}>
       <div>
         <h3>Are you sure to sigout</h3>
         <div>

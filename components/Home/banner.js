@@ -37,6 +37,7 @@ const Banner = () => {
             alt="banner2"
             className="img"
           />
+
           <Carousel.Caption>
             <h1>Health Requires Healthy Food</h1>
             <p>

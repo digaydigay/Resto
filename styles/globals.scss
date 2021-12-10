@@ -39,6 +39,9 @@ ul {
 @import "./signin.scss";
 @import "./signup.scss";
 @import "./signout.scss";
+@import "./formaddmenu.scss";
+@import "./cart.scss";
+@import "./placeorder.scss";
 @keyframes showforms {
   0% {
     transform: scale(0.3);

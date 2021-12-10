@@ -3,7 +3,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { useAuthContext } from "../../context/AuthProvider";
 export default function Signin() {
-  const { isAuthModal, hidemodal } = useAuthContext();
+  const { isModal, hidemodal } = useAuthContext();
   const [password, setPassword] = useState(false);
 
   const See = () => {
@@ -22,7 +22,7 @@ export default function Signin() {
   });
 
   return (
-    <div className={`signin ${isAuthModal === "signin" && "signin-show"}`}>
+    <div className={`signin ${isModal === "signin" && "signin-show"}`}>
       <div className="form-wrapper">
         <Formik initialValues={initialValues} validationSchema={validate}>
           {({ errors, touched }) => (

@@ -17,7 +17,7 @@ const CartHeader = () => {
             "active"
           }`}
         >
-          Pending Orders
+          Pending
         </li>
         <li
           onClick={() =>
@@ -28,8 +28,20 @@ const CartHeader = () => {
             "active"
           }`}
         >
-          Approved Orders
+          Rejected
         </li>
+        <li
+          onClick={() =>
+            Router.replace(`/cart/approved/${currentUser && currentUser.uid}`)
+          }
+          className={`${
+            Path == `/cart/approved/${currentUser && currentUser.uid}` &&
+            "active"
+          }`}
+        >
+          Approved
+        </li>
+
         <li
           onClick={() =>
             Router.replace(`/cart/completed/${currentUser && currentUser.uid}`)
@@ -39,7 +51,7 @@ const CartHeader = () => {
             "active"
           }`}
         >
-          Completed Orders
+          Completed
         </li>
       </ul>
     </div>

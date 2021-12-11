@@ -50,30 +50,35 @@ const LayoutHeader = ({}) => {
               onClick={Active}
               className={`${Router.asPath === "/" && "li-active"}`}
             >
-              Home
+              HOME
             </li>
 
             <li
               onClick={Active}
               className={`${Router.asPath === "/menus" && "li-active"}`}
             >
-              Menus
+              MENUS
             </li>
             <li
               onClick={Active}
-              className={`${Router.asPath === "/contacts" && "li-active"}`}
+              className={`${Router.asPath === "/help" && "li-active"}`}
             >
-              Contacts
+              HELP
             </li>
             <li
               onClick={Active}
-              className={`${Router.asPath === "/about" && "li-active"}`}
+              className={`${Router.asPath === "/resto" && "li-active"}`}
             >
-              About
+              RESTO
             </li>
-            <li>Privacy {`&`} Policy</li>
           </ul>
         </div>
+        {currentUser && currentUser.email && (
+          <div className="orders">
+            <i className="fas fa-concierge-bell"></i>
+          </div>
+        )}
+
         <div
           className="cart"
           onClick={() => {

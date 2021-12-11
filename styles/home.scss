@@ -1,6 +1,7 @@
 @import "./variable.scss";
 .home {
   .home_banner {
+    clip-path: ellipse(100% 55% at 48% 44%);
     .carousel {
       position: relative;
 
@@ -29,11 +30,6 @@
           rgba(0, 0, 0, 0.7)
         );
         z-index: 2;
-      }
-
-      .banner {
-        position: relative;
-        border: 1px solid rebeccapurple;
       }
 
       .carousel-caption {
@@ -86,11 +82,12 @@
     .row {
       margin: 0 20px 20px 20px;
 
+      background: rgb(223, 223, 223);
       .foodImg {
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: -2px 2px 7px 0 $secondary;
+        box-shadow: 0 0 8px 0 rgba(14, 14, 14, 0.7);
         margin-bottom: 10px;
         position: relative;
         padding: 0;
@@ -145,6 +142,8 @@
       }
       .foodInfo {
         animation: texts ease-in 500ms 1;
+
+        height: 100%;
       }
     }
 
@@ -236,7 +235,8 @@
     align-items: center;
     justify-content: center;
     padding: 10px 0 50px;
-
+    margin: 10px 0;
+    background: rgb(223, 223, 223);
     .title {
       margin-bottom: 10px;
       font-family: "Estonia", cursive;

@@ -17,14 +17,14 @@ export default function Home(s) {
 
       <div className="contacts">
         <h1>Contact us</h1>
-        <div className="bg">
-          <Image
-            src={bg}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-          />
-        </div>
+
+        <Image
+          src={bg}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+        />
+
         <form>
           <div className="input-group">
             <label>First Name</label>

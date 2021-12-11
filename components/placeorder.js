@@ -14,7 +14,7 @@ const Placeorder = () => {
     state: "",
     barangay: "",
     phone: "",
-    quantity: "1",
+    quantity: 1,
   };
 
   const validate = Yup.object({
@@ -42,6 +42,11 @@ const Placeorder = () => {
         address: address,
         uid: currentUser.uid,
       });
+      values.city = "";
+      values.state = "";
+      values.barangay = "";
+      values.phone = "";
+      values.quantity = 1;
     } catch {
       return null;
     }
@@ -52,14 +57,6 @@ const Placeorder = () => {
       className={`placeorder ${isModal === "placeorder" && "showplaceorder"}`}
     >
       <div className="placeorder-wrapper">
-        <div className="exit">
-          <i
-            className="fas fa-times"
-            onClick={() => {
-              hidemodal();
-            }}
-          ></i>
-        </div>
         <div className="order">
           <div className="orderimg">
             {isOrder && (
@@ -79,6 +76,19 @@ const Placeorder = () => {
         >
           {({ errors, touched, values }) => (
             <Form>
+              <div className="exit">
+                <i
+                  className="fas fa-times"
+                  onClick={() => {
+                    hidemodal();
+                    values.city = "";
+                    values.state = "";
+                    values.barangay = "";
+                    values.phone = "";
+                    values.quantity = 1;
+                  }}
+                ></i>
+              </div>
               <div className="input-group">
                 <Field
                   type="number"
@@ -93,12 +103,10 @@ const Placeorder = () => {
               <div className="error-message">
                 <p>{errors.quantity && touched.quantity && errors.quantity}</p>
               </div>
-
               <div className="total">
                 <h5>Total:</h5>
                 <h5>P{isOrder && isOrder.foodPrice * values.quantity}</h5>
               </div>
-
               <div className="input-group">
                 <label htmlFor="city">City / Province</label>
                 <Field
@@ -111,7 +119,6 @@ const Placeorder = () => {
               <div className="error-message">
                 <p>{errors.city && touched.city && errors.city}</p>
               </div>
-
               <div className="input-group">
                 <label htmlFor="municipality"> Municipality</label>
                 <Field

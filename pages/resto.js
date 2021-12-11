@@ -12,14 +12,12 @@ export default function About() {
       </Head>
 
       <div className="about">
-        <div className="bg">
-          <Image
-            src={bg}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-          />
-        </div>
+        <Image
+          src={bg}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+        />
 
         <Row>
           <Col sm={12} md={6}>

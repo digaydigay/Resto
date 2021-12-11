@@ -28,7 +28,7 @@ const FeaturedDish = () => {
             <div className="featured-food-name">
               <h2>Sisig</h2>
             </div>
-            <h6 data-aos="zoom-in" data-aos-duration="1000">
+            <h6>
               “Served sizzling on a hot stone plate, sisig is a favorite pulutan
               (beer chow) among Filipinos. The meat is primarily chopped up
               parts of the pigs’ face — in the Philippines, no cut of the animal

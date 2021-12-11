@@ -6,7 +6,7 @@ import { useAuthContext } from "../../../context/AuthProvider";
 import { db } from "../../../firebase";
 const PendingOrder = () => {
   const { currentUser } = useAuthContext();
-  const [pendings, setPendings] = useState();
+  const [pendings, setPendings] = useState([]);
   const [isDelete, setIsDelete] = useState(false);
   const Router = useRouter();
 
@@ -23,8 +23,8 @@ const PendingOrder = () => {
     !currentUser && Router.replace("/");
   }, []);
 
-  const modaldel = () => {
-    setIsDelete(!isDelete);
+  const del = async (id) => {
+    await db.collection("orders").doc(id).delete();
   };
 
   return (
@@ -39,21 +39,13 @@ const PendingOrder = () => {
                 return null;
               }
             })
-            .map((pending) => {
+            .map((pending, index) => {
               return (
-                <div className="order">
-                  {isDelete && (
-                    <div className="delete-modal">
-                      <div>
-                        <h4>Are you sure to Cancel?</h4>
-                        <div className="action">
-                          <button>Yes</button>
-                          <button onClick={modaldel}>Cancel</button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
+                <div className="order" key={index}>
+                  <div className="tag">
+                    <i className="fas fa-tags"></i>
+                    <h1>{index + 1}</h1>
+                  </div>
                   <div className="img">
                     <Image src={pending.foodPhoto} width="180" height="180" />
                   </div>
@@ -75,7 +67,7 @@ const PendingOrder = () => {
                       <b>Total: </b>
                       {pending.total}
                     </p>
-                    <button className="delete" onClick={modaldel}>
+                    <button className="delete" onClick={() => del(pending.id)}>
                       Cancel order
                     </button>
                   </div>

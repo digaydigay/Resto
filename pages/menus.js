@@ -12,6 +12,8 @@ export default function Home() {
   const { showaddmenumodal, currentUser, showplaceorder } = useAuthContext();
   const { setIsOrder } = useOrderContext();
   const [menus, setMenus] = useState();
+  const [search, setSearch] = useState("");
+  console.log(search);
   useEffect(() => {
     const fetch = async () => {
       await db.collection("menus").onSnapshot((snap) => {
@@ -20,6 +22,12 @@ export default function Home() {
     };
     fetch();
   }, []);
+
+  const handleonSearch = (e) => {
+    const { value } = e.target;
+
+    setSearch(value);
+  };
 
   return (
     <div>
@@ -41,12 +49,14 @@ export default function Home() {
         />
 
         <div className="search">
-          <form>
-            <input type="search" placeholder="search dish..." />
-            <button>
-              <i className="fas fa-search"></i>
-            </button>
-          </form>
+          <div className="form">
+            <input
+              type="search"
+              placeholder="search dish..."
+              value={search}
+              onChange={handleonSearch}
+            />
+          </div>
         </div>
         {currentUser && currentUser.email === "jonathan.digay1@gmail.com" && (
           <div className="addMenuBtn">
@@ -60,57 +70,71 @@ export default function Home() {
         <div className="menus-food">
           <Row>
             {menus &&
-              menus.map((menu, index) => {
-                return (
-                  <Col
-                    xs={6}
-                    sm={6}
-                    md={4}
-                    lg={3}
-                    xxl={2}
-                    className="d-flex justify-content-center"
-                    key={index}
-                  >
-                    <Card>
-                      <Card.Body>
-                        <Image src={menu.foodPhoto} width="300" height="300" />
-                      </Card.Body>
-                      <Card.Title>{menu.foodName}</Card.Title>
-                      <Card.Footer>
-                        <p>{`P${menu.foodPrice}`}</p>
-                        <button
-                          onClick={() => {
-                            showplaceorder();
-                            setIsOrder(menu);
-                          }}
-                        >
-                          Place order
-                        </button>
-                      </Card.Footer>
-                      {currentUser &&
-                        currentUser.email == "jonathan.digay1@gmail.com" && (
+              menus
+                .filter((menu) => {
+                  if (
+                    menu.foodName.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return menu;
+                  } else if (search === "") {
+                    return menu;
+                  }
+                })
+                .map((menu, index) => {
+                  return (
+                    <Col
+                      xs={6}
+                      sm={6}
+                      md={4}
+                      lg={3}
+                      xxl={2}
+                      className="d-flex justify-content-center"
+                      key={index}
+                    >
+                      <Card>
+                        <Card.Body>
+                          <Image
+                            src={menu.foodPhoto}
+                            width="300"
+                            height="300"
+                          />
+                        </Card.Body>
+                        <Card.Title>{menu.foodName}</Card.Title>
+                        <Card.Footer>
+                          <p>{`P${menu.foodPrice}`}</p>
                           <button
                             onClick={() => {
-                              const deletion = async () => {
-                                try {
-                                  await db
-                                    .collection("menus")
-                                    .doc(menu.id)
-                                    .delete();
-                                } catch (e) {
-                                  console.log(e);
-                                }
-                              };
-                              deletion();
+                              showplaceorder();
+                              setIsOrder(menu);
                             }}
                           >
-                            Delete
+                            Place order
                           </button>
-                        )}
-                    </Card>
-                  </Col>
-                );
-              })}
+                        </Card.Footer>
+                        {currentUser &&
+                          currentUser.email == "jonathan.digay1@gmail.com" && (
+                            <button
+                              onClick={() => {
+                                const deletion = async () => {
+                                  try {
+                                    await db
+                                      .collection("menus")
+                                      .doc(menu.id)
+                                      .delete();
+                                  } catch (e) {
+                                    console.log(e);
+                                  }
+                                };
+                                deletion();
+                              }}
+                            >
+                              Delete
+                            </button>
+                          )}
+                      </Card>
+                    </Col>
+                  );
+                })}
           </Row>
         </div>
       </div>

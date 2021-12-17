@@ -14,16 +14,21 @@ export default function Signup() {
   };
 
   const initialValues = {
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     confirmPassword: "",
   };
   const validate = Yup.object({
-    name: Yup.string()
+    firstname: Yup.string()
       .required("your name is required")
-      .min(3, "name must be 3-25 character")
-      .max(25, "name must be 3-25 character"),
+      .min(3, "name must be 3-20 character")
+      .max(20, "name must be 3-20 character"),
+    lastname: Yup.string()
+      .required("your name is required")
+      .min(3, "name must be 3-20 character")
+      .max(20, "name must be 3-20 character"),
     email: Yup.string()
       .email("invalid email address")
       .required("email is required in resto"),
@@ -47,17 +52,39 @@ export default function Signup() {
         <Formik
           initialValues={initialValues}
           validationSchema={validate}
-          onSubmit={(values) => onSignUp(values.email, values.password)}
+          onSubmit={(values) =>
+            onSignUp({
+              email: values.email,
+              password: values.password,
+              firstname: values.firstname,
+              lastname: values.lastname,
+            })
+          }
         >
           {({ errors, touched, values }) => (
             <Form>
               <h2>Sign Up</h2>
               <div className="input-group">
-                <label>Name</label>
-                <Field type="text" placeholder="your name..." name="name" />
+                <label>first Name</label>
+                <Field
+                  type="text"
+                  placeholder="Your Firstname.."
+                  name="firstname"
+                />
               </div>
               <div className="form-error">
-                {errors.name && touched.name && errors.name}
+                {errors.firstname && touched.firstname && errors.firstname}
+              </div>
+              <div className="input-group">
+                <label>Last Name</label>
+                <Field
+                  type="text"
+                  placeholder="Your Lastname..."
+                  name="lastname"
+                />
+              </div>
+              <div className="form-error">
+                {errors.lastname && touched.lastname && errors.lastname}
               </div>
               <div className="input-group">
                 <label>Email</label>

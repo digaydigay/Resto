@@ -1,53 +1,53 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useAuthContext } from "../../context/AuthProvider";
-const CartHeader = () => {
+const OrderHeader = () => {
   const Router = useRouter();
   const { currentUser } = useAuthContext();
   const Path = Router.asPath;
   return (
-    <div className="cart-header">
+    <div className="admin-header">
       <ul>
         <li
           onClick={() =>
-            Router.replace(`/cart/pending/${currentUser && currentUser.uid}`)
+            Router.replace(`/admin/pending/${currentUser && currentUser.uid}`)
           }
           className={`${
-            Path == `/cart/pending/${currentUser && currentUser.uid}` &&
+            Path === `/admin/pending/${currentUser && currentUser.uid}` &&
             "active"
           }`}
         >
-          Pending
+          Pendings
         </li>
         <li
           onClick={() =>
-            Router.replace(`/cart/rejected/${currentUser && currentUser.uid}`)
+            Router.replace(`/admin/reject/${currentUser && currentUser.uid}`)
           }
           className={`${
-            Path == `/cart/rejected/${currentUser && currentUser.uid}` &&
+            Path == `/admin/reject/${currentUser && currentUser.uid}` &&
             "active"
           }`}
         >
-          Rejected
+          Rejecteds
         </li>
         <li
           onClick={() =>
-            Router.replace(`/cart/approved/${currentUser && currentUser.uid}`)
+            Router.replace(`/admin/approve/${currentUser && currentUser.uid}`)
           }
           className={`${
-            Path == `/cart/approved/${currentUser && currentUser.uid}` &&
+            Path == `/admin/approve/${currentUser && currentUser.uid}` &&
             "active"
           }`}
         >
-          Approved
+          Delivery's
         </li>
 
         <li
           onClick={() =>
-            Router.replace(`/cart/completed/${currentUser && currentUser.uid}`)
+            Router.replace(`/admin/complete/${currentUser && currentUser.uid}`)
           }
           className={`${
-            Path == `/cart/completed/${currentUser && currentUser.uid}` &&
+            Path == `/admin/complete/${currentUser && currentUser.uid}` &&
             "active"
           }`}
         >
@@ -58,4 +58,4 @@ const CartHeader = () => {
   );
 };
 
-export default CartHeader;
+export default OrderHeader;

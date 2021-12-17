@@ -24,8 +24,8 @@ const Testimonial = () => {
               <div className="cardimg">
                 <Image src={P1} objectPosition="center" alt="img" />
               </div>
-              <Card.Title>Jonathan Digay 2</Card.Title>
-              <Card.Subtitle>student</Card.Subtitle>
+              <Card.Title>Client 1</Card.Title>
+              <Card.Subtitle>engeener</Card.Subtitle>
             </Card.Footer>
           </Card>
         </Carousel.Item>
@@ -45,7 +45,7 @@ const Testimonial = () => {
               <div className="cardimg">
                 <Image src={P1} objectPosition="center" alt="img" />
               </div>
-              <Card.Title>Jonathan Digay</Card.Title>
+              <Card.Title>Client 2</Card.Title>
               <Card.Subtitle>student</Card.Subtitle>
             </Card.Footer>
           </Card>

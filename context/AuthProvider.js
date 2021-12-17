@@ -10,6 +10,7 @@ export const useAuthContext = () => {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [isModal, setIsModal] = useState("none");
+  const [orders, setOrders] = useState();
 
   const signin = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
@@ -65,6 +66,8 @@ export const AuthProvider = ({ children }) => {
     hidemodal,
     signout,
     google,
+    orders,
+    setOrders,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

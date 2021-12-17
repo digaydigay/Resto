@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
-import CartHeader from "./cartHeader";
 import bg from "../../public/assets/banner2.jpg";
-import { useEffect } from "react";
+import OrderHeader from "./orderheader";
 import { db } from "../../firebase";
 import { useAuthContext } from "../../context/AuthProvider";
 import { useRouter } from "next/router";
-const Cartlayout = ({ children }) => {
+const OrderLayout = ({ children }) => {
   const { setOrders, currentUser } = useAuthContext();
   const Router = useRouter();
+
   useEffect(() => {
     !currentUser && Router.replace("/");
     const fetching = async () => {
@@ -19,19 +19,20 @@ const Cartlayout = ({ children }) => {
     fetching();
   }, []);
   return (
-    <div className="cart-layout">
+    <div className="order-layout">
       <Image
         src={bg}
         layout="fill"
         objectFit="cover"
         objectPosition="center"
         className="bg"
+        priority
       />
 
-      <CartHeader />
+      <OrderHeader />
       {children}
     </div>
   );
 };
 
-export default Cartlayout;
+export default OrderLayout;

@@ -8,7 +8,7 @@ export default function Signup() {
   return (
     <div className={`signout ${isModal === "signout" && "signout-show"}`}>
       <div>
-        <h3>Are you sure to sigout</h3>
+        <h3>Are you sure to signout</h3>
         <div>
           <button onClick={onsignout}>Yes</button>
           <button onClick={() => hidemodal()}>Cancel</button>

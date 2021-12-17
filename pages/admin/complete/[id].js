@@ -1,26 +1,23 @@
 import React from "react";
+import OrderLayout from "../orderlayout";
 import { useAuthContext } from "../../../context/AuthProvider";
 import { useOrderContext } from "../../../context/orderContext";
-import Cartlayout from "../Cartlayout";
 const Completed = () => {
-  const { orders, currentUser } = useAuthContext();
+  const { orders } = useAuthContext();
   const { setCompleted } = useOrderContext();
   return (
-    <Cartlayout>
-      <div>
+    <OrderLayout>
+      <div className="completed-wrapper">
         {orders &&
           orders
             .filter((complete) => {
-              if (
-                complete.status === "completed" &&
-                currentUser.uid === complete.uid
-              ) {
+              if (complete.status === "completed") {
                 return complete;
               }
             })
-            .map((complete, i) => {
+            .map((complete) => {
               return (
-                <div className="complete-order" key={i}>
+                <div className="completed-client">
                   <div className="name">{complete.person}</div>
                   <div className="time">{complete.time}</div>
                   <div className="info" onClick={() => setCompleted(complete)}>
@@ -30,7 +27,7 @@ const Completed = () => {
               );
             })}
       </div>
-    </Cartlayout>
+    </OrderLayout>
   );
 };
 

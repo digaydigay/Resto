@@ -10,6 +10,7 @@ body {
 // font-family: 'Open Sans', sans-serif;
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap");
 // font-family: 'Open Sans', sans-serif;
+@import "./variable.scss";
 a {
   color: unset !important;
   text-decoration: none !important;
@@ -30,6 +31,75 @@ ul {
   margin: 0 !important;
 }
 
+.rejectmodal {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100vh;
+  background: rgba(51, 51, 51, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  z-index: 1000;
+  visibility: hidden;
+
+  form {
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 500px;
+    max-width: 500px;
+    max-height: 100vh;
+    padding: 5px 10px;
+    background: white;
+    margin: 10px 0;
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      padding: 5px;
+      textarea {
+        min-height: 100px;
+        max-height: 100px;
+        padding: 5px 10px;
+        box-shadow: 0 0 3px 0 black;
+        outline: none;
+        border: none;
+      }
+
+      .action {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        button {
+          border: none;
+          outline: none;
+          margin-right: 10px;
+          padding: 5px 10px;
+          background: $secondary;
+          color: white;
+          border-radius: 2px;
+          &:hover {
+            background: $primary;
+            transform: scale(0.9);
+          }
+        }
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+.showrejectmodal {
+  visibility: visible;
+
+  form {
+    animation: showforms 500ms ease-in 1;
+  }
+}
+
 @import "./Header.scss";
 @import "./home.scss";
 @import "./menus.scss";
@@ -42,6 +112,8 @@ ul {
 @import "./formaddmenu.scss";
 @import "./cart.scss";
 @import "./placeorder.scss";
+@import "./admin.scss";
+@import "./Layout.module.scss";
 @keyframes showforms {
   0% {
     transform: scale(0.3);

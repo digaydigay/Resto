@@ -10,6 +10,9 @@ const LayoutHeader = ({}) => {
   const [ulMobile, setUlMobile] = useState(false);
   const [headBg, setHeadBg] = useState(false);
 
+  const cartpath = Router.pathname.slice(0, 5);
+  const adminpath = Router.pathname.slice(0, 6);
+
   const { showsigninmodal, showsignupmodal, currentUser, showsignoutmodal } =
     useAuthContext();
 
@@ -73,14 +76,21 @@ const LayoutHeader = ({}) => {
             </li>
           </ul>
         </div>
-        {currentUser && currentUser.email && (
-          <div className="orders">
+        {currentUser && currentUser.email === "jonathan.digay1@gmail.com" && (
+          <div
+            className={`orders ${adminpath === "/admin" && "admin-active"}`}
+            onClick={() => {
+              Router.replace(
+                `/admin/pending/${currentUser && currentUser.uid}`
+              );
+            }}
+          >
             <i className="fas fa-concierge-bell"></i>
           </div>
         )}
 
         <div
-          className="cart"
+          className={`cart ${cartpath === "/cart" && "cart-active"}`}
           onClick={() => {
             if (!currentUser) {
               return showsignupmodal();

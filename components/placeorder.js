@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import { useOrderContext } from "../context/orderContext";
 import { useAuthContext } from "../context/AuthProvider";
+import { useRouter } from "next/router";
 import * as Yup from "yup";
 import Image from "next/image";
 import { db } from "../firebase";
 const Placeorder = () => {
   const { isOrder } = useOrderContext();
   const { hidemodal, isModal, currentUser } = useAuthContext();
-
+  const Router = useRouter();
   const initial = {
     city: "",
     state: "",
@@ -30,8 +31,13 @@ const Placeorder = () => {
     const food = isOrder && isOrder.foodName;
     const backdrop = isOrder && isOrder.foodPhoto;
     const contact = values.phone;
+    const dateinit = new Date();
+    const date = dateinit.toLocaleDateString();
+    const time = dateinit.toLocaleTimeString();
     try {
       await db.collection("orders").add({
+        person: currentUser.displayName,
+        email: currentUser.email,
         status: "pending",
         foodName: food,
         foodPhoto: backdrop,
@@ -41,12 +47,15 @@ const Placeorder = () => {
         quantity: values.quantity,
         address: address,
         uid: currentUser.uid,
+        time: `${date}, ${time}`,
       });
       values.city = "";
       values.state = "";
       values.barangay = "";
       values.phone = "";
       values.quantity = 1;
+      hidemodal();
+      Router.replace(`/cart/pending/${currentUser && currentUser.uid}`);
     } catch {
       return null;
     }

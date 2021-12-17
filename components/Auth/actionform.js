@@ -1,18 +1,23 @@
 import { useAuthContext } from "../../context/AuthProvider";
+import { auth } from "../../firebase";
 import { db } from "../../firebase";
+import { useRouter } from "next/router";
 export function ActionForm() {
-  const { google, signup, hidemodal, signout } = useAuthContext();
-
-  const onSignUp = async (email, password) => {
+  const { google, signup, hidemodal, signout, currentUser } = useAuthContext();
+  const Router = useRouter();
+  const onSignUp = async ({ email, password, name }) => {
     try {
       const { user } = await signup(email, password);
       const userRef = db.doc(`users/${user.uid}`);
       const snap = await userRef.get();
+      hidemodal();
 
-      Cookies.set("user", JSON.stringify(user));
+      await auth.currentUser.updateProfile({
+        displayName: name,
+      });
       if (!snap.exists) {
         useRef.set({
-          displayName: user.displayName,
+          displayName: name,
           email: user.email,
           photoURL: null,
           birthdate: null,
@@ -55,6 +60,8 @@ export function ActionForm() {
 
   const onsignout = async () => {
     try {
+      Router.replace("/");
+
       await signout();
       await hidemodal();
     } catch (e) {

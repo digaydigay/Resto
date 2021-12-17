@@ -60,6 +60,10 @@ h3 {
       color: $primary;
     }
   }
+  .cart-active,
+  .admin-active {
+    color: $primary;
+  }
   .user {
     width: 30px;
     background: white;
@@ -283,6 +287,10 @@ h3 {
   .cart,
   .orders {
     color: $secondary;
+  }
+  .cart-active,
+  .admin-active {
+    color: $primary;
   }
 
   .user {

@@ -9,6 +9,9 @@ import Signout from "./Auth/signout";
 import Loader from "./Loader";
 import Formaddmenu from "./menus/formaddmenu";
 import Placeorder from "./placeorder";
+import Rejectmodal from "./rejectmodal";
+import Rejectinfo from "./rejectinfo";
+import Completeinfo from "./completedinfo";
 const Layout = ({ children }) => {
   return (
     <div className={layout}>
@@ -19,6 +22,9 @@ const Layout = ({ children }) => {
       <Signout />
       <Loader />
       <Formaddmenu />
+      <Rejectmodal />
+      <Rejectinfo />
+      <Completeinfo />
       <Placeorder />
       <LayoutFooter />
     </div>

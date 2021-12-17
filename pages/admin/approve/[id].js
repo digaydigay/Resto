@@ -1,76 +1,83 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Cartlayout from "../Cartlayout";
+import OrderLayout from "../orderlayout";
 import { useAuthContext } from "../../../context/AuthProvider";
 import { useLoader } from "../../../context/loader";
 import { db } from "../../../firebase";
 const PendingOrder = () => {
   const { currentUser, orders } = useAuthContext();
-  const Router = useRouter();
-  const { setIsLoader } = useLoader();
+  const dateinit = new Date();
+  const date = dateinit.toDateString();
+  const time = dateinit.toLocaleTimeString();
 
-  const del = async (id) => {
-    setIsLoader(true);
-
-    setTimeout(async () => {
-      await db.collection("orders").doc(id).delete();
-      setIsLoader(false);
-    }, 2000);
+  const complete = async (id) => {
+    try {
+      await db
+        .collection("orders")
+        .doc(id)
+        .update({
+          status: "completed",
+          time: `${date},${time}`,
+        });
+    } catch {
+      return null;
+    }
   };
 
   return (
-    <Cartlayout>
-      <div className="pendingorders">
+    <OrderLayout>
+      <div className="approvedorders">
         {orders && currentUser
           ? orders
               .filter((order) => {
-                if (
-                  order.status === "pending" &&
-                  order.uid === currentUser.uid
-                ) {
+                if (order.status === "approved") {
                   return order;
                 } else {
                   return null;
                 }
               })
-              .map((pending, index) => {
+              .map((approved, index) => {
                 return (
-                  <div className="order" key={index}>
+                  <div className="approvedorder" key={index}>
                     <div className="tag">
                       <i className="fas fa-tags"></i>
                       <h1>{index + 1}</h1>
                     </div>
                     <div className="img">
-                      <Image src={pending.foodPhoto} width="180" height="180" />
+                      <Image
+                        src={approved.foodPhoto}
+                        width="180"
+                        height="180"
+                      />
                     </div>
                     <div className="order-info">
-                      <h4>{pending.foodName}</h4>
+                      <h4>{approved.foodName}</h4>
                       <p>
-                        <b>Delivery Address: </b> {pending.address}{" "}
+                        <b>Delivery Address: </b> {approved.address}{" "}
                       </p>
                       <p>
                         <b>Price: </b>
-                        {pending.price}
+                        {approved.price}
                       </p>
 
                       <p>
                         <b>Quantity: </b>
-                        {pending.quantity}
+                        {approved.quantity}
                       </p>
                       <p>
                         <b>Total: </b>
-                        {pending.total}
+                        {approved.total}
                       </p>
                       <p>
                         <b>Date ordered:</b>
-                        {pending.time}
+                        {approved.time}
                       </p>
                       <button
                         className="delete"
-                        onClick={() => del(pending.id)}
+                        onClick={() => complete(approved.id)}
                       >
-                        Cancel order
+                        Complete
                       </button>
                     </div>
                   </div>
@@ -78,7 +85,7 @@ const PendingOrder = () => {
               })
           : ""}
       </div>
-    </Cartlayout>
+    </OrderLayout>
   );
 };
 

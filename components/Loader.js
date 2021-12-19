@@ -11,7 +11,7 @@ const Loader = () => {
       {isLoader && (
         <div className={loaderStyle}>
           <div>
-            <Image src={loader} />
+            <Image src={loader} alt="img" />
           </div>
         </div>
       )}

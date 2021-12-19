@@ -17,7 +17,7 @@ const Cartlayout = ({ children }) => {
       });
     };
     fetching();
-  }, []);
+  }, [currentUser]);
   return (
     <div className="cart-layout">
       <Image

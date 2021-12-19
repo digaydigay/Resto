@@ -22,7 +22,7 @@ const Aprroved = () => {
             })
             .map((approve, index) => {
               return (
-                <div className="approved-order">
+                <div className="approved-order" key={index}>
                   <div className="tag">
                     <i className="fas fa-tags"></i>
                     <h1>{index + 1}</h1>

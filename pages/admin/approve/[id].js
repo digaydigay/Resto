@@ -49,6 +49,7 @@ const PendingOrder = () => {
                         src={approved.foodPhoto}
                         width="180"
                         height="180"
+                        alt="img"
                       />
                     </div>
                     <div className="order-info">

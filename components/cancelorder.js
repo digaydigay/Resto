@@ -17,7 +17,12 @@ const Cancelorder = () => {
         <div className="cancel-order">
           <div>
             <div className="img">
-              <Image src={isCancel.foodPhoto} width="200" height="200" />
+              <Image
+                src={isCancel.foodPhoto}
+                width="200"
+                height="200"
+                alt="img"
+              />
             </div>
             <h6>{isCancel && isCancel.foodName}</h6>
             <h5>Are you sure to cancel?</h5>

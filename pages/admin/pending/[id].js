@@ -35,7 +35,7 @@ const OrderClient = () => {
               return (
                 <>
                   {pending && (
-                    <div className="order-wrapper">
+                    <div className="order-wrapper" key={index}>
                       <div className="tag">
                         <i className="fas fa-tags"></i>
                         <h1>{index + 1}</h1>

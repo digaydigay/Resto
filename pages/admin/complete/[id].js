@@ -15,9 +15,9 @@ const Completed = () => {
                 return complete;
               }
             })
-            .map((complete) => {
+            .map((complete, i) => {
               return (
-                <div className="completed-client">
+                <div className="completed-client" key={i}>
                   <div className="name">{complete.person}</div>
                   <div className="time">{complete.time}</div>
                   <div className="info" onClick={() => setCompleted(complete)}>

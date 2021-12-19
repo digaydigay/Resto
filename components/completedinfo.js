@@ -17,7 +17,12 @@ const Completeinfo = () => {
               ></i>
             </div>
             <div className="img">
-              <Image src={completed.foodPhoto} width="180" height="180" />
+              <Image
+                src={completed.foodPhoto}
+                width="180"
+                height="180"
+                alt="img"
+              />
             </div>
             <div className="order-info">
               <h4>{completed.foodName}</h4>

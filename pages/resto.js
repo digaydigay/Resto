@@ -39,7 +39,7 @@ export default function About() {
             </p>
           </Col>
           <Col sm={12} md={6}>
-            <Image src={bg} objectPosition="center" />
+            <Image src={bg} objectPosition="center" alt="img" />
           </Col>
         </Row>
       </div>

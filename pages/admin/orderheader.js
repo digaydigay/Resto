@@ -39,7 +39,7 @@ const OrderHeader = () => {
             "active"
           }`}
         >
-          Delivery's
+          Deliverys
         </li>
 
         <li

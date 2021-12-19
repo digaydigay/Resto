@@ -17,7 +17,7 @@ const OrderLayout = ({ children }) => {
       });
     };
     fetching();
-  }, []);
+  }, [currentUser]);
   return (
     <div className="order-layout">
       <Image
@@ -26,6 +26,7 @@ const OrderLayout = ({ children }) => {
         objectFit="cover"
         objectPosition="center"
         className="bg"
+        alt="img"
         priority
       />
 

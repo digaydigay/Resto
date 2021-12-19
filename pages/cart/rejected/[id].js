@@ -18,9 +18,9 @@ const RejectClient = () => {
                 return reject;
               }
             })
-            .map((reject) => {
+            .map((reject, i) => {
               return (
-                <div className="reject-client">
+                <div className="reject-client" key={i}>
                   <div className="name">{reject.foodName}</div>
                   <div className="time">{reject.time}</div>
                   <div className="info" onClick={() => setRejectinfo(reject)}>

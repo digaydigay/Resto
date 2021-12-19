@@ -17,7 +17,12 @@ const Rejectinfo = () => {
               ></i>
             </div>
             <div className="img">
-              <Image src={rejectinfo.foodPhoto} width="180" height="180" />
+              <Image
+                src={rejectinfo.foodPhoto}
+                width="180"
+                height="180"
+                alt="img"
+              />
             </div>
             <div className="order-info">
               <h4>{rejectinfo.foodName}</h4>

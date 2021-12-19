@@ -25,7 +25,7 @@ const Cancelorder = () => {
               />
             </div>
             <h6>{isCancel && isCancel.foodName}</h6>
-            <h5>Are you sure to cancel?</h5>
+            <h5>Are you sure to cancel this order?</h5>
 
             <div className="action">
               <button onClick={() => Cancel(isCancel.id)}>Yes</button>

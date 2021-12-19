@@ -3,7 +3,8 @@ import { auth } from "../../firebase";
 import { db } from "../../firebase";
 import { useRouter } from "next/router";
 export function ActionForm() {
-  const { google, signup, hidemodal, signout, currentUser } = useAuthContext();
+  const { google, signup, hidemodal, signout, currentUser, signin } =
+    useAuthContext();
   const Router = useRouter();
   const onSignUp = async ({ email, password, firstname, lastname }) => {
     try {
@@ -11,9 +12,9 @@ export function ActionForm() {
       const userRef = db.doc(`users/${user.uid}`);
       const snap = await userRef.get();
       hidemodal();
-
+      Router.replace("/menus");
       await auth.currentUser.updateProfile({
-        displayName: `${firstname} ${" "} ${lastname}`,
+        displayName: `${firstname} ${lastname}`,
       });
       if (!snap.exists) {
         useRef.set({
@@ -33,13 +34,23 @@ export function ActionForm() {
     }
   };
 
+  const onSignin = async (email, password) => {
+    try {
+      await signin(email, password);
+      hidemodal();
+      Router.replace("/menus");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const googleprovider = async () => {
     try {
       const { user } = await google();
       let useRef = db.doc(`users/${user.uid}`);
       const snap = await useRef.get();
       hidemodal();
-
+      Router.replace("/menus");
       if (!snap.exists) {
         useRef.set({
           displayName: user.displayName,
@@ -68,5 +79,5 @@ export function ActionForm() {
       return null;
     }
   };
-  return { googleprovider, onSignUp, onsignout };
+  return { googleprovider, onSignUp, onsignout, onSignin };
 }

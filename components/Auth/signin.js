@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { useAuthContext } from "../../context/AuthProvider";
+import { ActionForm } from "./actionform";
 export default function Signin() {
+  const { onSignin } = ActionForm();
   const { isModal, hidemodal } = useAuthContext();
   const [password, setPassword] = useState(false);
 
@@ -24,8 +26,14 @@ export default function Signin() {
   return (
     <div className={`signin ${isModal === "signin" && "signin-show"}`}>
       <div className="form-wrapper">
-        <Formik initialValues={initialValues} validationSchema={validate}>
-          {({ errors, touched }) => (
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validate}
+          onSubmit={(values) => {
+            onSignin(values.email, values.password);
+          }}
+        >
+          {({ errors, touched, values }) => (
             <Form>
               <h2>Sign In</h2>
               <div className="input-group">
@@ -65,7 +73,14 @@ export default function Signin() {
               </div>
               <div className="actions">
                 <button type="submit">Sign In</button>
-                <button type="button" onClick={() => hidemodal()}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    hidemodal();
+                    values.email = "";
+                    values.password = "";
+                  }}
+                >
                   cancel
                 </button>
               </div>

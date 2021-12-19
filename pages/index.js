@@ -1,11 +1,22 @@
 import Head from "next/head";
 import Script from "next/script";
+import { useEffect } from "react";
 import Banner from "../components/Home/banner";
 import FeaturedDish from "../components/Home/featureddish";
 import SmallBanner from "../components/Home/smallbanner";
 import Testimonial from "../components/Home/testimonial";
-
+import { db } from "../firebase";
+import { useAuthContext } from "../context/AuthProvider";
 export default function Home() {
+  const { setOrders } = useAuthContext();
+  useEffect(() => {
+    const fetching = async () => {
+      await db.collection("orders").onSnapshot((snap) => {
+        setOrders(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      });
+    };
+    fetching();
+  }, []);
   return (
     <div>
       <Head>
@@ -19,7 +30,6 @@ export default function Home() {
       ></Script>
       <div className="home">
         <Banner />
-
         <FeaturedDish />
         <SmallBanner />
         <Testimonial />

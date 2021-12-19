@@ -83,7 +83,7 @@ export default function Signup() {
                   name="lastname"
                 />
               </div>
-              <div className="form-error">
+              <div classN="form-error">
                 {errors.lastname && touched.lastname && errors.lastname}
               </div>
               <div className="input-group">
@@ -136,7 +136,17 @@ export default function Signup() {
               </div>
               <div className="actions">
                 <button type="submit">Sign up</button>
-                <button type="button" onClick={() => hidemodal()}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    hidemodal();
+                    (values.email = ""),
+                      (values.firstname = ""),
+                      (values.lastname = ""),
+                      (values.password = ""),
+                      (values.confirmPassword = "");
+                  }}
+                >
                   cancel
                 </button>
               </div>

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 export function ActionForm() {
   const { google, signup, hidemodal, signout, currentUser } = useAuthContext();
   const Router = useRouter();
-  const onSignUp = async ({ email, password, name }) => {
+  const onSignUp = async ({ email, password, firstname, lastname }) => {
     try {
       const { user } = await signup(email, password);
       const userRef = db.doc(`users/${user.uid}`);
@@ -13,11 +13,11 @@ export function ActionForm() {
       hidemodal();
 
       await auth.currentUser.updateProfile({
-        displayName: name,
+        displayName: `${firstname} ${" "} ${lastname}`,
       });
       if (!snap.exists) {
         useRef.set({
-          displayName: name,
+          displayName: `${firstname} ${" "} ${lastname}`,
           email: user.email,
           photoURL: null,
           birthdate: null,

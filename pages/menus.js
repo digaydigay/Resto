@@ -9,11 +9,12 @@ import { db } from "../firebase";
 import { useOrderContext } from "../context/orderContext";
 // component
 export default function Home() {
-  const { showaddmenumodal, currentUser, showplaceorder } = useAuthContext();
+  const { showaddmenumodal, currentUser, showplaceorder, showsignupmodal } =
+    useAuthContext();
   const { setIsOrder } = useOrderContext();
   const [menus, setMenus] = useState();
   const [search, setSearch] = useState("");
-  console.log(search);
+
   useEffect(() => {
     const fetch = async () => {
       await db.collection("menus").onSnapshot((snap) => {
@@ -60,10 +61,11 @@ export default function Home() {
         </div>
         {currentUser && currentUser.email === "jonathan.digay1@gmail.com" && (
           <div className="addMenuBtn">
-            <i
-              className="fas fa-plus-circle"
-              onClick={() => showaddmenumodal()}
-            ></i>
+            <button onClick={() => showaddmenumodal()}>
+              {" "}
+              <i className="fas fa-plus-circle"></i>
+              add dish
+            </button>
           </div>
         )}
 
@@ -104,6 +106,9 @@ export default function Home() {
                           <p>{`P${menu.foodPrice}`}</p>
                           <button
                             onClick={() => {
+                              if (!currentUser) {
+                                return showsignupmodal();
+                              }
                               showplaceorder();
                               setIsOrder(menu);
                             }}
@@ -127,8 +132,10 @@ export default function Home() {
                                 };
                                 deletion();
                               }}
+                              className="
+                              trash"
                             >
-                              Delete
+                              <i className="fas fa-trash"></i>
                             </button>
                           )}
                       </Card>

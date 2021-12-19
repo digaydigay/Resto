@@ -5,10 +5,12 @@ import { useOrderContext } from "../../../context/orderContext";
 import { db } from "../../../firebase";
 import Image from "next/image";
 const OrderClient = () => {
-  const { orders, currentUser, setIsModal } = useAuthContext();
+  const { orders, currentUser, setIsModal, isModal } = useAuthContext();
+
   const { setReject } = useOrderContext();
   const rejected = (pending) => {
     setIsModal("rejectmodal");
+    console.log(isModal);
     setReject(pending);
   };
   const approved = async (pending) => {

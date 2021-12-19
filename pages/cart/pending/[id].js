@@ -5,8 +5,10 @@ import Cartlayout from "../Cartlayout";
 import { useAuthContext } from "../../../context/AuthProvider";
 import { useLoader } from "../../../context/loader";
 import { db } from "../../../firebase";
+import { useOrderContext } from "../../../context/orderContext";
 const PendingOrder = () => {
   const { currentUser, orders } = useAuthContext();
+  const { setIsCancel } = useOrderContext();
   const Router = useRouter();
   const { setIsLoader } = useLoader();
 
@@ -68,7 +70,7 @@ const PendingOrder = () => {
                       </p>
                       <button
                         className="delete"
-                        onClick={() => del(pending.id)}
+                        onClick={() => setIsCancel(pending)}
                       >
                         Cancel order
                       </button>

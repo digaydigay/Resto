@@ -1,74 +1,37 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+import React from "react";
 import Cartlayout from "../Cartlayout";
 import { useAuthContext } from "../../../context/AuthProvider";
-import Image from "next/image";
-const Rejected = () => {
-  const { currentUser, orders } = useAuthContext();
-  const [reject, setReject] = useState(false);
-
+import { useOrderContext } from "../../../context/orderContext";
+const RejectClient = () => {
+  const { orders, currentUser } = useAuthContext();
+  const { setRejectinfo } = useOrderContext();
   return (
     <Cartlayout>
-      <div className="rejectedorders">
-        {orders && currentUser
-          ? orders
-              .filter((order) => {
-                if (
-                  order.status === "rejected" &&
-                  currentUser.uid === order.uid
-                ) {
-                  return order;
-                }
-              })
-              .map((rejected, index) => {
-                return (
-                  <div className="rejected-order">
-                    <div className="tag">
-                      <i className="fas fa-tags"></i>
-                      <h1>{index + 1}</h1>
-                    </div>
-
-                    <div className="img">
-                      <Image
-                        src={rejected.foodPhoto}
-                        width={200}
-                        height={200}
-                      />
-                    </div>
-                    <div className="rejected-info">
-                      <h4>{rejected.foodName}</h4>
-                      <p>
-                        <b>Delivery Address: </b> {rejected.address}
-                      </p>
-                      <p>
-                        <b>Price: </b>
-                        {rejected.price}
-                      </p>
-
-                      <p>
-                        <b>Quantity: </b>
-                        {rejected.quantity}
-                      </p>
-                      <p>
-                        <b>Total: </b>
-                        {rejected.total}
-                      </p>
-                      <p>
-                        <b>Date rejected: </b>
-                        {rejected.total}
-                      </p>
-                      <p>
-                        <b>Reason of Rejecting:</b>
-                        {rejected.message}
-                      </p>
-                    </div>
+      <div className="reject-wrapper">
+        {orders &&
+          orders
+            .filter((reject) => {
+              if (
+                reject.status === "rejected" &&
+                reject.uid === currentUser.uid
+              ) {
+                return reject;
+              }
+            })
+            .map((reject) => {
+              return (
+                <div className="reject-client">
+                  <div className="name">{reject.foodName}</div>
+                  <div className="time">{reject.time}</div>
+                  <div className="info" onClick={() => setRejectinfo(reject)}>
+                    <i className="fas fa-info-circle"></i>
                   </div>
-                );
-              })
-          : ""}
+                </div>
+              );
+            })}
       </div>
     </Cartlayout>
   );
 };
 
-export default Rejected;
+export default RejectClient;

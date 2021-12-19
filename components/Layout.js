@@ -12,6 +12,7 @@ import Placeorder from "./placeorder";
 import Rejectmodal from "./rejectmodal";
 import Rejectinfo from "./rejectinfo";
 import Completeinfo from "./completedinfo";
+import Cancelorder from "./cancelorder";
 const Layout = ({ children }) => {
   return (
     <div className={layout}>
@@ -26,6 +27,7 @@ const Layout = ({ children }) => {
       <Rejectinfo />
       <Completeinfo />
       <Placeorder />
+      <Cancelorder />
       <LayoutFooter />
     </div>
   );

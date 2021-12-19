@@ -49,20 +49,30 @@
     align-items: center;
     position: relative;
     z-index: 1;
+    button {
+      outline: none;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 5px;
 
-    i {
-      color: $primary;
-      font-size: 1.9rem;
-      cursor: pointer;
+      i {
+        color: $primary;
+        font-size: 1.9rem;
+        cursor: pointer;
+      }
 
       &:hover {
-        color: white;
+        color: $primary;
       }
     }
   }
 
   .menus-food {
     padding: 10px;
+    position: relative;
     .row {
       > div {
         padding: 0 !important;
@@ -72,14 +82,18 @@
       max-width: 300px;
       margin: 5px;
       width: 100%;
+      animation: showup 500ms ease-in 1;
       .card-body {
         padding: 0;
 
         max-height: 300px;
+        position: relative;
+        background: rgb(223, 223, 223);
       }
       .card-title {
         padding-left: 10px;
         font-size: 1rem;
+        height: 40px;
       }
       .card-footer {
         display: flex;
@@ -119,10 +133,20 @@
         }
       }
 
-      button {
+      .trash {
         background: $primary;
         border: none;
         outline: none;
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        background: white;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        &:hover {
+          color: $primary;
+        }
       }
     }
   }

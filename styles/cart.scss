@@ -57,28 +57,6 @@
   .pendingorders {
     height: 100%;
 
-    .nopendingorder {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      text-align: center;
-
-      h3 {
-        color: $textNdark;
-        opacity: 0.7;
-        font-weight: 400;
-      }
-      button {
-        border: none;
-        outline: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-        background: $primary;
-      }
-    }
-
     .order {
       margin: 5px 10px;
       min-height: 200px;
@@ -132,72 +110,42 @@
   }
 
   // Rejected order
-  .rejectedorders {
-    height: 100%;
-
-    .norejectedorders {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      text-align: center;
-
-      h3 {
-        color: $textNdark;
-        opacity: 0.7;
-        font-weight: 400;
-      }
-    }
-
-    .rejected-order {
-      margin: 5px 10px;
-      min-height: 200px;
-      padding: 5px 10px;
-      position: relative;
+  .reject-wrapper {
+    .reject-client {
+      min-height: 40px;
+      margin: 10px 0 10px;
       background: white;
-      border-bottom: 2px solid $primary;
-      border-top: 2px solid $primary;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      flex-wrap: wrap;
 
-      .img {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: max-content;
-        margin: auto;
-        background: rgb(220, 220, 220);
+      .name {
+        padding: 0 5px;
       }
-      .rejected-info {
-        flex: 1;
-
-        text-align: center;
-        padding: 5px;
-
-        button {
-          border: none;
-          outline: none;
-          padding: 5px 10px;
-
-          background: $primary;
-          border-radius: 50px;
-          box-shadow: -2px 0 3px 0px $secondary;
-          position: relative;
-
-          &:hover {
-            transform: scale(0.9);
-          }
-        }
+      .time {
+        padding: 0 5px;
       }
-
-      .tag {
+      .info {
         position: absolute;
-        left: 5px;
-        top: 5px;
-        width: 50px;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        background: $primary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        cursor: pointer;
+        i {
+          color: white;
+          font-size: 1.2rem;
+        }
 
-        color: $primary;
-        font-size: 1.2rem;
+        &:hover {
+          opacity: 0.9;
+        }
       }
     }
   }

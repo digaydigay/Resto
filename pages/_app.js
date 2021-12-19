@@ -7,9 +7,9 @@ import Layout from "../components/Layout";
 import { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
-import { LoaderContext, useLoader } from "../context/loader";
+import { LoaderContext } from "../context/loader";
 import { OrderContext } from "../context/orderContext";
-
+import { db } from "../firebase";
 function MyApp({ Component, Props }) {
   useEffect(() => {
     AOS.init();
@@ -20,12 +20,15 @@ function MyApp({ Component, Props }) {
   const [approve, setApproved] = useState();
   const [completed, setCompleted] = useState();
   const [rejectinfo, setRejectinfo] = useState();
+  const [isCancel, setIsCancel] = useState();
 
   const ordervalue = {
     isOrder,
     setIsOrder,
     reject,
     setReject,
+    isCancel,
+    setIsCancel,
     rejectinfo,
     setRejectinfo,
     completed,
@@ -35,9 +38,12 @@ function MyApp({ Component, Props }) {
   };
   useEffect(() => {
     setIsLoader(true);
-    setTimeout(() => {
+
+    const fetch = async () => {
+      await db.collection("menus");
       setIsLoader(false);
-    }, 2000);
+    };
+    fetch();
   }, []);
   return (
     <>

@@ -7,6 +7,7 @@ import * as Yup from "yup";
 const Rejectmodal = () => {
   const { isModal, showrejectmodal, hidemodal } = useAuthContext();
   const { reject } = useOrderContext();
+  console.log(isModal);
 
   const onreject = async (values) => {
     const message = values.reject;

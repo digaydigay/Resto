@@ -23,6 +23,7 @@ export default function Home(s) {
           layout="fill"
           objectFit="cover"
           objectPosition="center"
+          className="bg"
         />
 
         <form>

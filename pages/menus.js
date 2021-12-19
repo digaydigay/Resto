@@ -99,6 +99,7 @@ export default function Home() {
                             src={menu.foodPhoto}
                             width="300"
                             height="300"
+                            alt="img"
                           />
                         </Card.Body>
                         <Card.Title>{menu.foodName}</Card.Title>

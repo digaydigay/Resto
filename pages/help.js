@@ -24,6 +24,7 @@ export default function Home(s) {
           objectFit="cover"
           objectPosition="center"
           className="bg"
+          alt="img"
         />
 
         <form>

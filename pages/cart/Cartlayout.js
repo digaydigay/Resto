@@ -22,6 +22,7 @@ const Cartlayout = ({ children }) => {
     <div className="cart-layout">
       <Image
         src={bg}
+        alt="img"
         layout="fill"
         objectFit="cover"
         objectPosition="center"

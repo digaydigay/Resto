@@ -1,26 +1,11 @@
 import React from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import Cartlayout from "../Cartlayout";
 import { useAuthContext } from "../../../context/AuthProvider";
-import { useLoader } from "../../../context/loader";
-import { db } from "../../../firebase";
 import { useOrderContext } from "../../../context/orderContext";
 const PendingOrder = () => {
   const { currentUser, orders } = useAuthContext();
   const { setIsCancel } = useOrderContext();
-  const Router = useRouter();
-  const { setIsLoader } = useLoader();
-
-  const del = async (id) => {
-    setIsLoader(true);
-
-    setTimeout(async () => {
-      await db.collection("orders").doc(id).delete();
-      setIsLoader(false);
-    }, 2000);
-  };
-
   return (
     <Cartlayout>
       <div className="pendingorders">

@@ -69,7 +69,12 @@ const Placeorder = () => {
         <div className="order">
           <div className="orderimg">
             {isOrder && (
-              <Image src={isOrder.foodPhoto} width="200" height="200" />
+              <Image
+                src={isOrder.foodPhoto}
+                width="200"
+                height="200"
+                alt="img"
+              />
             )}
           </div>
           <div className="order-description">

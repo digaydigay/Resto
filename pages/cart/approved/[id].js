@@ -29,7 +29,12 @@ const Aprroved = () => {
                   </div>
 
                   <div className="img">
-                    <Image src={approve.foodPhoto} width={200} height={200} />
+                    <Image
+                      src={approve.foodPhoto}
+                      width={200}
+                      height={200}
+                      alt="img"
+                    />
                   </div>
                   <div className="approve-info">
                     <h4>{approve.foodName}</h4>

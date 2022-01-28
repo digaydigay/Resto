@@ -9,7 +9,7 @@ const LayoutFooter = () => {
           <Image src={resto} alt="resto" />
         </div>
         <h2>Resto</h2>
-        <p>Copyright ©2021 All rights reserved : code by digay</p>
+        <p> ©2021 All rights reserved : code by digay</p>
       </div>
       <div className="column2">
         <ul>

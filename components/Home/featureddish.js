@@ -25,7 +25,7 @@ const FeaturedDish = () => {
       {menus ? (
         <div className="featured-food">
           <div className="featured-food-title">
-            <h1>Menus</h1>
+            <h1>Featured Menus</h1>
           </div>
           <div className="menus-food">
             <Row>
@@ -78,12 +78,14 @@ const FeaturedDish = () => {
                 Router.replace("/menus");
               }}
             >
-              see more... <i className="fas fa-arrow-right"></i>
+              see more menus... <i className="fas fa-angle-double-right"></i>
             </button>
           </div>
         </div>
       ) : (
-        <div className="loading"></div>
+        <div className="loading">
+          <p>menus loading....</p>
+        </div>
       )}
     </>
   );

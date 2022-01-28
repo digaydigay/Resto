@@ -12,8 +12,6 @@ export const AuthProvider = ({ children }) => {
   const [isModal, setIsModal] = useState("none");
   const [orders, setOrders] = useState();
 
-  console.log(currentUser);
-
   const signin = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
   };

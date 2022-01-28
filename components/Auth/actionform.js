@@ -2,20 +2,23 @@ import { useAuthContext } from "../../context/AuthProvider";
 import { auth } from "../../firebase";
 import { db } from "../../firebase";
 import { useRouter } from "next/router";
+import { useState } from "react";
 export function ActionForm() {
-  const { google, signup, hidemodal, signout, currentUser, signin } =
-    useAuthContext();
+  const { google, signup, hidemodal, signout, signin } = useAuthContext();
   const Router = useRouter();
+  const [isSignUpERR, setSignupERR] = useState();
+  const [isSigInERR, setSignInERR] = useState();
   const onSignUp = async ({ email, password, firstname, lastname }) => {
     try {
       const { user } = await signup(email, password);
       const userRef = db.doc(`users/${user.uid}`);
       const snap = await userRef.get();
-      hidemodal();
-      Router.replace("/menus");
+
       await auth.currentUser.updateProfile({
         displayName: `${firstname} ${lastname}`,
       });
+      await hidemodal();
+      await Router.replace("/menus");
       if (!snap.exists) {
         useRef.set({
           displayName: `${firstname} ${" "} ${lastname}`,
@@ -27,9 +30,9 @@ export function ActionForm() {
           createdAt: new Date(),
         });
       } else {
-        return null;
       }
     } catch (e) {
+      setSignupERR(e);
       return null;
     }
   };
@@ -40,7 +43,7 @@ export function ActionForm() {
       hidemodal();
       Router.replace("/menus");
     } catch (e) {
-      console.log(e);
+      setSignInERR(e);
     }
   };
 
@@ -75,9 +78,18 @@ export function ActionForm() {
 
       await signout();
       await hidemodal();
+
+      location.reload();
     } catch (e) {
       return null;
     }
   };
-  return { googleprovider, onSignUp, onsignout, onSignin };
+  return {
+    googleprovider,
+    onSignUp,
+    onsignout,
+    onSignin,
+    isSignUpERR,
+    isSigInERR,
+  };
 }

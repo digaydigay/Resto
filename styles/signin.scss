@@ -6,7 +6,7 @@
   transform: translateY(-50%);
   width: 100%;
   height: 100vh;
-  background: rgba(51, 51, 51, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +31,10 @@
   form {
     h2 {
       color: $secondary;
+      text-align: center;
+    }
+    .err {
+      background: rgba(255, 0, 0, 0.3);
       text-align: center;
     }
 

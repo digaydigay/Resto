@@ -2,6 +2,8 @@
 .home {
   .home_banner {
     clip-path: ellipse(100% 55% at 48% 44%);
+    background: rgba(0, 0, 0, 0.5);
+    min-height: 400px;
     .carousel {
       position: relative;
 
@@ -189,40 +191,21 @@
 
     .see-more {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
-      padding: 10px 10px;
+      padding: 10px 30px;
 
       button {
         border: none;
         outline: none;
         padding: 5px 10px;
-        background: rgb(177, 177, 177);
-        border-radius: 5px 20px 20px 5px;
+        background: rgba(177, 177, 177, 0.4);
+        border-radius: 5px;
         &:hover {
           transform: translateX(5px);
           background: $primary;
         }
       }
-    }
-  }
-
-  .loading {
-    height: 300px;
-    background: rgb(228, 228, 228);
-    position: relative;
-    ::before {
-      content: "";
-      position: absolute;
-      height: 100px;
-      width: 200px;
-      background: linear-gradient(
-        180deg,
-        white,
-        rgba(255, 255, 255, 0.5),
-        rgba(255, 255, 255, 0.3)
-      );
-      left: 0;
     }
   }
 
@@ -314,6 +297,24 @@
       .carousel-control-next {
         display: none;
       }
+    }
+  }
+
+  .loading {
+    height: 300px;
+    background: rgb(228, 228, 228);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    p {
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.5;
+      font-weight: bold;
     }
   }
 }

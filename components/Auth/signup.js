@@ -5,9 +5,9 @@ import { useAuthContext } from "../../context/AuthProvider";
 import { ActionForm } from "./actionform";
 
 export default function Signup() {
-  const { isModal, hidemodal } = useAuthContext();
+  const { isModal, hidemodal, showsigninmodal } = useAuthContext();
   const [password, setPassword] = useState(false);
-  const { googleprovider, onSignUp } = ActionForm();
+  const { googleprovider, onSignUp, isSignUpERR } = ActionForm();
 
   const See = () => {
     setPassword(!password);
@@ -64,6 +64,7 @@ export default function Signup() {
           {({ errors, touched, values }) => (
             <Form>
               <h2>Sign Up</h2>
+              <p className="err">{isSignUpERR && isSignUpERR.message}</p>
               <div className="input-group">
                 <label>first Name</label>
                 <Field
@@ -152,7 +153,7 @@ export default function Signup() {
               </div>
               <div className="reminder">
                 <p>already have an account?</p>
-                <p>Sign in</p>
+                <p onClick={() => showsigninmodal()}>Sign in</p>
               </div>
               <div className="social_auth">
                 <i

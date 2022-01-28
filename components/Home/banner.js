@@ -20,7 +20,7 @@ const Banner = () => {
           />
 
           <Carousel.Caption>
-            <h1>We Delever a innovative Dishes</h1>
+            <h1>We Deliver a innovative Dishes</h1>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
               expedita unde sequi cum.

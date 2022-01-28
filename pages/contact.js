@@ -2,7 +2,9 @@ import Head from "next/head";
 import Script from "next/script";
 import Image from "next/image";
 import bg from "../public/assets/banner1.jpg";
-export default function Home(s) {
+import { useAuthContext } from "../context/AuthProvider";
+export default function Contact() {
+  const { currentUser } = useAuthContext();
   return (
     <div>
       <Head>
@@ -29,27 +31,30 @@ export default function Home(s) {
 
         <form>
           <div className="input-group">
-            <label>First Name</label>
-            <input type="text" placeholder="First Name..." />
+            <label>Name</label>
+            <input
+              type="text"
+              placeholder="First Name..."
+              value={currentUser && currentUser.displayName}
+            />
           </div>
           <div className="input-group">
-            <label>Last Name</label>
-            <input type="text" placeholder="Last Name..." />
+            <label>Email </label>
+            <input
+              type="text"
+              placeholder="First Name..."
+              value={currentUser && currentUser.email}
+            />
           </div>
-
-          <select>
-            <option value="">Choose Subject..</option>
-            <option value="for dish"> For Dish</option>
-            <option value="for drinks"> For Drinks</option>
-            <option value="for reservation"> For Reservation</option>
-          </select>
 
           <div className="input-group">
             <label>Message</label>
             <textarea type="text" placeholder="Your Concern..." />
           </div>
           <div className="btn">
-            <button>Send up</button>
+            <button type="button" onClick={() => location.reload()}>
+              Send up
+            </button>
           </div>
         </form>
       </div>

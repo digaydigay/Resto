@@ -71,7 +71,7 @@ export default function Home() {
 
         <div className="menus-food">
           <Row>
-            {menus &&
+            {menus ? (
               menus
                 .filter((menu) => {
                   if (
@@ -142,7 +142,13 @@ export default function Home() {
                       </Card>
                     </Col>
                   );
-                })}
+                })
+            ) : (
+              <div className="loading">
+                <p>menus loading....</p>
+              </div>
+            )}
+            :
           </Row>
         </div>
       </div>

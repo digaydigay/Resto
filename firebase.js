@@ -4,12 +4,12 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const FirebaseCredentials = {
-  apiKey: "AIzaSyDl_MwkUYLX8QqlTPBE-gvf-Sby5MkLNe8",
-  authDomain: "resto-fdd8e.web.app",
-  projectId: "resto-fdd8e",
-  storageBucket: "resto-fdd8e.appspot.com",
-  messagingSenderId: "194730069308",
-  appId: "1:194730069308:web:812f2eaaf085776761e239",
+  apiKey: "AIzaSyBLnE0gKt52-Uc2M0u6Usb5SscH37r-4Wk",
+  authDomain: "digay-resto.firebaseapp.com",
+  projectId: "digay-resto",
+  storageBucket: "digay-resto.appspot.com",
+  messagingSenderId: "1088783776018",
+  appId: "1:1088783776018:web:da5f7bc5429f3e347b5bcb",
 };
 
 // Initialize Firebase

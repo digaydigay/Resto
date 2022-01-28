@@ -77,6 +77,24 @@
       > div {
         padding: 0 !important;
       }
+
+      .loading {
+        height: 300px;
+        background: rgb(228, 228, 228);
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        p {
+          text-align: center;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+
+          font-weight: bold;
+        }
+      }
     }
     .card {
       max-width: 300px;

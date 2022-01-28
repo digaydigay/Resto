@@ -3,17 +3,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
 import Script from "next/script";
 import { AuthProvider } from "../context/AuthProvider";
+import { ToogleProvider } from "../context/Toogle";
 import Layout from "../components/Layout";
 import { useEffect, useState } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
-import { LoaderContext } from "../context/loader";
 import { OrderContext } from "../context/orderContext";
-import { db } from "../firebase";
+import { LoaderContext } from "../context/loader";
+
 function MyApp({ Component, Props }) {
-  useEffect(() => {
-    AOS.init();
-  });
   const [isLoader, setIsLoader] = useState(false);
   const [isOrder, setIsOrder] = useState();
   const [reject, setReject] = useState();
@@ -36,15 +34,6 @@ function MyApp({ Component, Props }) {
     approve,
     setApproved,
   };
-  useEffect(() => {
-    setIsLoader(true);
-
-    const fetch = async () => {
-      await db.collection("menus");
-      setIsLoader(false);
-    };
-    fetch();
-  }, []);
   return (
     <>
       <Head>
@@ -59,9 +48,11 @@ function MyApp({ Component, Props }) {
       <OrderContext.Provider value={ordervalue}>
         <LoaderContext.Provider value={{ isLoader, setIsLoader }}>
           <AuthProvider>
-            <Layout>
-              <Component {...Props} />
-            </Layout>
+            <ToogleProvider>
+              <Layout>
+                <Component {...Props} />
+              </Layout>
+            </ToogleProvider>
           </AuthProvider>
         </LoaderContext.Provider>
       </OrderContext.Provider>

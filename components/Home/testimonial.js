@@ -35,9 +35,7 @@ const Testimonial = () => {
               <p>
                 recusandae, adipisci mollitia omnis quisquam sint commodi iusto
                 perspiciatis ut porro nobis ex facilis incidunt repellat iste?
-                doloribus expedita, dignissimos velit commodi? Quia cumque odit
-                recusandae, adipisci mollitia omnis quisquam sint commodi iusto
-                perspiciatis ut porro nobis ex facilis incidunt repellat iste?
+                doloribus expedita,
               </p>
             </Card.Body>
 

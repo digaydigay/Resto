@@ -4,12 +4,12 @@ import resto from "../public/assets/resto.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAuthContext } from "../context/AuthProvider";
-
+import { useToogle } from "../context/Toogle";
 const LayoutHeader = ({}) => {
   const Router = useRouter();
   const [ulMobile, setUlMobile] = useState(false);
   const [headBg, setHeadBg] = useState(false);
-
+  const { setIsProfile } = useToogle();
   const cartpath = Router.pathname.slice(0, 5);
   const adminpath = Router.pathname.slice(0, 6);
 
@@ -64,9 +64,9 @@ const LayoutHeader = ({}) => {
             </li>
             <li
               onClick={Active}
-              className={`${Router.asPath === "/help" && "li-active"}`}
+              className={`${Router.asPath === "/contact" && "li-active"}`}
             >
-              HELP
+              CONTACT
             </li>
             <li
               onClick={Active}
@@ -100,23 +100,8 @@ const LayoutHeader = ({}) => {
         >
           <i className="fas fa-shopping-cart"></i>
         </div>
-        <div className="user">
+        <div className="user" onClick={() => setIsProfile(true)}>
           <i className="fas fa-user"></i>
-
-          <ul className="user-nav">
-            {!currentUser && (
-              <>
-                <li onClick={() => showsigninmodal()}>sign in</li>
-                <li onClick={() => showsignupmodal()}>Create Account</li>
-              </>
-            )}
-            {currentUser && (
-              <>
-                <li>{currentUser.displayName}</li>
-                <li onClick={() => showsignoutmodal()}>Sign out</li>
-              </>
-            )}
-          </ul>
         </div>
       </div>
     </div>

@@ -25,11 +25,13 @@ const PendingOrder = () => {
                 return (
                   <div className="order" key={index}>
                     <div className="tag">
-                      <i className="fas fa-tags"></i>
                       <h1>{index + 1}</h1>
                     </div>
                     <div className="img">
                       <Image src={pending.foodPhoto} width="180" height="180" />
+                      <div>
+                        <p>x{pending.quantity}</p>
+                      </div>
                     </div>
                     <div className="order-info">
                       <h4>{pending.foodName}</h4>
@@ -37,22 +39,17 @@ const PendingOrder = () => {
                         <b>Delivery Address: </b> {pending.address}{" "}
                       </p>
                       <p>
-                        <b>Price: </b>
-                        {pending.price}
+                        <b>Price: </b>P{pending.price}
                       </p>
 
                       <p>
-                        <b>Quantity: </b>
-                        {pending.quantity}
-                      </p>
-                      <p>
-                        <b>Total: </b>
-                        {pending.total}
+                        <b>Total: </b>P{pending.total}
                       </p>
                       <p>
                         <b>Date ordered:</b>
-                        {pending.time}
+                        <div> {pending.time}</div>
                       </p>
+                      <button>Contact</button>
                       <button
                         className="delete"
                         onClick={() => setIsCancel(pending)}

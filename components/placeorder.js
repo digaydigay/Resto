@@ -3,12 +3,14 @@ import { Formik, Field, Form } from "formik";
 import { useOrderContext } from "../context/orderContext";
 import { useAuthContext } from "../context/AuthProvider";
 import { useRouter } from "next/router";
+import { useLoader } from "../context/loader";
 import * as Yup from "yup";
 import Image from "next/image";
 import { db } from "../firebase";
 const Placeorder = () => {
   const { isOrder } = useOrderContext();
   const { hidemodal, isModal, currentUser } = useAuthContext();
+  const [isDisable, setIsDisable] = useState(true);
   const Router = useRouter();
   const initial = {
     city: "",
@@ -26,6 +28,7 @@ const Placeorder = () => {
   });
 
   const Order = async (values) => {
+    setIsDisable(false);
     const total = isOrder && isOrder.foodPrice * values.quantity;
     const address = `${values.barangay},${values.state},${values.city}`;
     const food = isOrder && isOrder.foodName;
@@ -34,6 +37,7 @@ const Placeorder = () => {
     const dateinit = new Date();
     const date = dateinit.toLocaleDateString();
     const time = dateinit.toLocaleTimeString();
+
     try {
       await db.collection("orders").add({
         person: currentUser.displayName,
@@ -49,6 +53,8 @@ const Placeorder = () => {
         uid: currentUser.uid,
         time: `${date}, ${time}`,
       });
+      setIsDisable(true);
+
       values.city = "";
       values.state = "";
       values.barangay = "";
@@ -169,9 +175,13 @@ const Placeorder = () => {
               <div className="error-message">
                 <p>{errors.phone && touched.phone && errors.phone}</p>
               </div>
-              <button type="submit" className="submit">
-                Order Now
-              </button>
+              {isDisable ? (
+                <button type="submit" className="submit">
+                  Order Now
+                </button>
+              ) : (
+                <button type="button">processing...</button>
+              )}
             </Form>
           )}
         </Formik>

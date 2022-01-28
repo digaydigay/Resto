@@ -21,7 +21,7 @@ const Completed = () => {
             .map((complete, i) => {
               return (
                 <div className="complete-order" key={i}>
-                  <div className="name">{complete.person}</div>
+                  <div className="name">{complete.foodName}</div>
                   <div className="time">{complete.time}</div>
                   <div className="info" onClick={() => setCompleted(complete)}>
                     <i className="fas fa-info-circle"></i>

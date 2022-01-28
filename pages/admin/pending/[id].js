@@ -6,7 +6,10 @@ import { db } from "../../../firebase";
 import Image from "next/image";
 const OrderClient = () => {
   const { orders, currentUser, setIsModal, isModal } = useAuthContext();
+  const dateinit = new Date();
 
+  const date = dateinit.toDateString();
+  const time = dateinit.toLocaleTimeString();
   const { setReject } = useOrderContext();
   const rejected = (pending) => {
     setIsModal("rejectmodal");
@@ -14,9 +17,13 @@ const OrderClient = () => {
     setReject(pending);
   };
   const approved = async (pending) => {
-    await db.collection("orders").doc(pending.id).update({
-      status: "approved",
-    });
+    await db
+      .collection("orders")
+      .doc(pending.id)
+      .update({
+        status: "approved",
+        time: `${date},${time}`,
+      });
   };
   return (
     <OrderLayout>
@@ -46,6 +53,10 @@ const OrderClient = () => {
                           width="180"
                           height="180"
                         />
+
+                        <div>
+                          <p>x{pending.quantity}</p>
+                        </div>
                       </div>
                       <div className="order-info">
                         <h4>{pending.foodName}</h4>
@@ -63,17 +74,11 @@ const OrderClient = () => {
                         </p>
 
                         <p>
-                          <b>Price: </b>
-                          {pending.price}
+                          <b>Price: </b>P{pending.price}
                         </p>
 
                         <p>
-                          <b>Quantity: </b>
-                          {pending.quantity}
-                        </p>
-                        <p>
-                          <b>Total: </b>
-                          {pending.total}
+                          <b>Total: </b>P{pending.total}
                         </p>
                         <button onClick={() => rejected(pending)}>
                           Reject

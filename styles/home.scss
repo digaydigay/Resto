@@ -133,6 +133,8 @@
         max-width: 300px;
         margin: 5px;
         width: 100%;
+        box-shadow: 0 0 3px 0px $secondary;
+
         .card-body {
           padding: 0;
           max-height: 300px;
@@ -160,7 +162,7 @@
             padding: 5px 10px;
 
             background: $primary;
-            border-radius: 50px;
+
             box-shadow: -2px 0 3px 0px $secondary;
 
             &:hover {

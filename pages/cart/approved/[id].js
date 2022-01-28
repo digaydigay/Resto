@@ -42,8 +42,7 @@ const Aprroved = () => {
                       <b>Delivery Address: </b> {approve.address}
                     </p>
                     <p>
-                      <b>Price: </b>
-                      {approve.price}
+                      <b>Price: </b>P{approve.price}
                     </p>
 
                     <p>
@@ -51,12 +50,11 @@ const Aprroved = () => {
                       {approve.quantity}
                     </p>
                     <p>
-                      <b>Total: </b>
-                      {approve.total}
+                      <b>Total: </b>P{approve.total}
                     </p>
                     <p>
                       <b>Date Approved: </b>
-                      {approve.total}
+                      <div>{approve.time}</div>
                     </p>
                   </div>
                 </div>

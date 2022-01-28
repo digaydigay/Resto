@@ -58,8 +58,7 @@ const PendingOrder = () => {
                         <b>Delivery Address: </b> {approved.address}{" "}
                       </p>
                       <p>
-                        <b>Price: </b>
-                        {approved.price}
+                        <b>Price: </b>P{approved.price}
                       </p>
 
                       <p>
@@ -67,12 +66,11 @@ const PendingOrder = () => {
                         {approved.quantity}
                       </p>
                       <p>
-                        <b>Total: </b>
-                        {approved.total}
+                        <b>Total: </b>P{approved.total}
                       </p>
                       <p>
                         <b>Date ordered:</b>
-                        {approved.time}
+                        <div>{approved.time}</div>
                       </p>
                       <button
                         className="delete"

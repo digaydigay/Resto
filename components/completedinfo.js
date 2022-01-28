@@ -44,10 +44,7 @@ const Completeinfo = () => {
                 <b>Total: </b>
                 {completed.total}
               </p>
-              <p>
-                <b>Reason: </b>
-                {completed.message}
-              </p>
+
               <p>
                 <b>Date Completed: </b>
                 {completed.time}

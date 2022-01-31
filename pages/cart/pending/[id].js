@@ -28,7 +28,12 @@ const PendingOrder = () => {
                       <h1>{index + 1}</h1>
                     </div>
                     <div className="img">
-                      <Image src={pending.foodPhoto} width="180" height="180" />
+                      <Image
+                        src={pending.foodPhoto}
+                        width="180"
+                        height="180"
+                        alt="img"
+                      />
                       <div>
                         <p>x{pending.quantity}</p>
                       </div>

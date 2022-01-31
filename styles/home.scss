@@ -122,72 +122,78 @@
     }
 
     .menus-food {
-      padding: 10px;
       overflow: hidden;
       .row {
         > div {
           padding: 0 !important;
+          margin: 0 !important;
         }
       }
-      .card {
-        max-width: 300px;
-        margin: 5px;
-        width: 100%;
-        box-shadow: 0 0 3px 0px $secondary;
+    }
+    .row {
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100%;
+    }
+    .card {
+      max-width: 300px;
+      min-height: 300px;
+      margin: 5px;
+      width: 100%;
+      box-shadow: 0 0 3px 0px $secondary;
+      background: rgb(223, 223, 223);
+      .card-body {
+        padding: 0;
+        max-height: 300px;
+        position: relative;
+        background: rgb(223, 223, 223);
+      }
+      .card-title {
+        padding-left: 10px;
+        font-size: 1rem;
+      }
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        .card-body {
-          padding: 0;
-          max-height: 300px;
-          position: relative;
-          background: rgb(223, 223, 223);
-        }
-        .card-title {
-          padding-left: 10px;
-          font-size: 1rem;
-        }
-        .card-footer {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          p {
-            margin: 0;
-            padding: 0 5px;
-            font-size: 0.9rem;
-          }
-
-          button {
-            border: none;
-            outline: none;
-            padding: 5px 10px;
-
-            background: $primary;
-
-            box-shadow: -2px 0 3px 0px $secondary;
-
-            &:hover {
-              transform: scale(0.9);
-            }
-          }
-
-          .card-text {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            text-decoration: underline;
-            cursor: pointer;
-
-            &:hover {
-              opacity: 0.7;
-            }
-          }
+        p {
+          margin: 0;
+          padding: 0 5px;
+          font-size: 0.9rem;
         }
 
         button {
-          background: $primary;
           border: none;
           outline: none;
+          padding: 5px 10px;
+
+          background: $primary;
+
+          box-shadow: -2px 0 3px 0px $secondary;
+
+          &:hover {
+            transform: scale(0.9);
+          }
         }
+
+        .card-text {
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          text-decoration: underline;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+
+      button {
+        background: $primary;
+        border: none;
+        outline: none;
       }
     }
 
@@ -299,24 +305,6 @@
       .carousel-control-next {
         display: none;
       }
-    }
-  }
-
-  .loading {
-    height: 300px;
-    background: rgb(228, 228, 228);
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    p {
-      text-align: center;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      opacity: 0.5;
-      font-weight: bold;
     }
   }
 }

@@ -47,6 +47,7 @@ export default function Home() {
           layout="fill"
           objectFit="cover"
           objectPosition="center"
+          alt="img"
         />
 
         <div className="search">
@@ -144,11 +145,69 @@ export default function Home() {
                   );
                 })
             ) : (
-              <div className="loading">
-                <p>menus loading....</p>
-              </div>
+              <>
+                <Col
+                  xs={6}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xxl={2}
+                  className="d-flex justify-content-center"
+                >
+                  <Card></Card>
+                </Col>
+                <Col
+                  xs={6}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xxl={2}
+                  className="d-flex justify-content-center"
+                >
+                  <Card></Card>
+                </Col>
+                <Col
+                  xs={6}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xxl={2}
+                  className="d-flex justify-content-center"
+                >
+                  <Card></Card>
+                </Col>
+                <Col
+                  xs={6}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xxl={2}
+                  className="d-flex justify-content-center"
+                >
+                  <Card></Card>
+                </Col>
+                <Col
+                  xs={6}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xxl={2}
+                  className="d-flex justify-content-center"
+                >
+                  <Card></Card>
+                </Col>
+                <Col
+                  xs={6}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xxl={2}
+                  className="d-flex justify-content-center"
+                >
+                  <Card></Card>
+                </Col>
+              </>
             )}
-            :
           </Row>
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function SmallBanner() {
           objectPosition="center"
           alt="img"
         />
-        <h1 data-aos="zoom-in" data-aos-duration="1000">
+        <h1>
           When you eat food with your family and friends, it always tastes
           better!
         </h1>

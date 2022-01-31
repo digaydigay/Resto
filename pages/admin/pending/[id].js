@@ -52,6 +52,7 @@ const OrderClient = () => {
                           src={pending.foodPhoto}
                           width="180"
                           height="180"
+                          alt="img"
                         />
 
                         <div>

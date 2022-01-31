@@ -5,9 +5,8 @@ import Script from "next/script";
 import { AuthProvider } from "../context/AuthProvider";
 import { ToogleProvider } from "../context/Toogle";
 import Layout from "../components/Layout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "aos/dist/aos.css";
-import AOS from "aos";
 import { OrderContext } from "../context/orderContext";
 import { LoaderContext } from "../context/loader";
 

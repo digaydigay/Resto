@@ -98,8 +98,11 @@
     }
     .card {
       max-width: 300px;
+      min-height: 300px;
       margin: 5px;
       width: 100%;
+      box-shadow: 0 0 3px 0px $secondary;
+      background: rgb(223, 223, 223);
       animation: showup 500ms ease-in 1;
       .card-body {
         padding: 0;

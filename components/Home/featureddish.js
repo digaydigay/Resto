@@ -22,11 +22,11 @@ const FeaturedDish = () => {
 
   return (
     <>
-      {menus ? (
-        <div className="featured-food">
-          <div className="featured-food-title">
-            <h1>Featured Menus</h1>
-          </div>
+      <div className="featured-food">
+        <div className="featured-food-title">
+          <h1>Featured Menus</h1>
+        </div>
+        {menus ? (
           <div className="menus-food">
             <Row>
               {menus.map((menu, index) => {
@@ -47,6 +47,7 @@ const FeaturedDish = () => {
                             src={menu.foodPhoto}
                             width="300"
                             height="300"
+                            alt="img"
                           />
                         </Card.Body>
                         <Card.Title>{menu.foodName}</Card.Title>
@@ -71,22 +72,82 @@ const FeaturedDish = () => {
               })}
             </Row>
           </div>
-
-          <div className="see-more">
-            <button
-              onClick={() => {
-                Router.replace("/menus");
-              }}
-            >
-              see more menus... <i className="fas fa-angle-double-right"></i>
-            </button>
+        ) : (
+          <div className="featured-loading">
+            <Row>
+              <Col
+                xs={6}
+                sm={6}
+                md={4}
+                lg={3}
+                xxl={2}
+                className="d-flex justify-content-center"
+              >
+                <Card></Card>
+              </Col>
+              <Col
+                xs={6}
+                sm={6}
+                md={4}
+                lg={3}
+                xxl={2}
+                className="d-flex justify-content-center"
+              >
+                <Card></Card>
+              </Col>
+              <Col
+                xs={6}
+                sm={6}
+                md={4}
+                lg={3}
+                xxl={2}
+                className="d-flex justify-content-center"
+              >
+                <Card></Card>
+              </Col>
+              <Col
+                xs={6}
+                sm={6}
+                md={4}
+                lg={3}
+                xxl={2}
+                className="d-flex justify-content-center"
+              >
+                <Card></Card>
+              </Col>
+              <Col
+                xs={6}
+                sm={6}
+                md={4}
+                lg={3}
+                xxl={2}
+                className="d-flex justify-content-center"
+              >
+                <Card></Card>
+              </Col>
+              <Col
+                xs={6}
+                sm={6}
+                md={4}
+                lg={3}
+                xxl={2}
+                className="d-flex justify-content-center"
+              >
+                <Card></Card>
+              </Col>
+            </Row>
           </div>
+        )}
+        <div className="see-more">
+          <button
+            onClick={() => {
+              Router.replace("/menus");
+            }}
+          >
+            see more menus... <i className="fas fa-angle-double-right"></i>
+          </button>
         </div>
-      ) : (
-        <div className="loading">
-          <p>menus loading....</p>
-        </div>
-      )}
+      </div>
     </>
   );
 };

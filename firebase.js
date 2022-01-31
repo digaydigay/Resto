@@ -8,8 +8,9 @@ const FirebaseCredentials = {
   authDomain: "digay-resto.firebaseapp.com",
   projectId: "digay-resto",
   storageBucket: "digay-resto.appspot.com",
-  messagingSenderId: "1088783776018",
-  appId: "1:1088783776018:web:da5f7bc5429f3e347b5bcb",
+  messagingSendefirebasrId: "1088783776018",
+  appId:
+    "1:1088783776018:web:da5f7bc5429f3e347b5bcbfirebase loginfirebase loginfirebase loginfirebase init",
 };
 
 // Initialize Firebase

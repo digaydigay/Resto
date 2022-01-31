@@ -17,7 +17,7 @@ const OrderLayout = ({ children }) => {
       });
     };
     fetching();
-  }, [currentUser]);
+  }, [currentUser, Router, setOrders]);
   return (
     <div className="order-layout">
       <Image

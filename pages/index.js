@@ -16,7 +16,7 @@ export default function Home() {
       });
     };
     fetching();
-  }, []);
+  }, [setOrders]);
   return (
     <div>
       <Head>

@@ -49,7 +49,7 @@ const Profile = () => {
               <>
                 <div>
                   <div className="not-user">
-                    <p>Please add Credentials</p>
+                    <p>Please add or create an account!</p>
                   </div>
                   <button
                     onClick={() => {

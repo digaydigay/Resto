@@ -28,8 +28,28 @@ h3 {
   align-items: center;
   height: 100%;
 
+  .user-admin {
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    .count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: coral;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    }
+  }
+
   .cart {
     color: white;
+
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -39,7 +59,7 @@ h3 {
     i {
       font-size: 1.3rem;
     }
-    &:hover {
+    &:hover > i {
       color: $primary;
     }
   }
@@ -55,12 +75,12 @@ h3 {
     i {
       font-size: 1.3rem;
     }
-    &:hover {
+    &:hover > i {
       color: $primary;
     }
   }
-  .cart-active,
-  .admin-active {
+  .cart-active > i,
+  .admin-active > i {
     color: $primary;
   }
   .user {

@@ -4,13 +4,12 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const FirebaseCredentials = {
-  apiKey: "AIzaSyBLnE0gKt52-Uc2M0u6Usb5SscH37r-4Wk",
-  authDomain: "digay-resto.firebaseapp.com",
-  projectId: "digay-resto",
-  storageBucket: "digay-resto.appspot.com",
-  messagingSendefirebasrId: "1088783776018",
-  appId:
-    "1:1088783776018:web:da5f7bc5429f3e347b5bcbfirebase loginfirebase loginfirebase loginfirebase init",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROGJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSendefirebasrId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 // Initialize Firebase

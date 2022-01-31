@@ -84,7 +84,7 @@ export default function Signup() {
                   name="lastname"
                 />
               </div>
-              <div classN="form-error">
+              <div className="form-error">
                 {errors.lastname && touched.lastname && errors.lastname}
               </div>
               <div className="input-group">

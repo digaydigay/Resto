@@ -24,7 +24,7 @@ const FeaturedDish = () => {
     <>
       <div className="featured-food">
         <div className="featured-food-title">
-          <h1>Featured Menus</h1>
+          <h1>Todays Menu</h1>
         </div>
         {menus ? (
           <div className="menus-food">

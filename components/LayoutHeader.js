@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAuthContext } from "../context/AuthProvider";
 import { useToogle } from "../context/Toogle";
+
 const LayoutHeader = ({}) => {
   const Router = useRouter();
   const [ulMobile, setUlMobile] = useState(false);
@@ -12,9 +13,9 @@ const LayoutHeader = ({}) => {
   const { setIsProfile } = useToogle();
   const cartpath = Router.pathname.slice(0, 5);
   const adminpath = Router.pathname.slice(0, 6);
-
-  const { showsigninmodal, showsignupmodal, currentUser, showsignoutmodal } =
-    useAuthContext();
+  const [count, setCount] = useState();
+  console.log(count);
+  const { showsignupmodal, currentUser, orders } = useAuthContext();
 
   const Active = (e) => {
     const { innerText } = e.target;
@@ -78,7 +79,9 @@ const LayoutHeader = ({}) => {
         </div>
         {currentUser && currentUser.email === "jonathan.digay1@gmail.com" && (
           <div
-            className={`orders ${adminpath === "/admin" && "admin-active"}`}
+            className={`orders user-admin ${
+              adminpath === "/admin" && "admin-active"
+            }`}
             onClick={() => {
               Router.replace(
                 `/admin/pending/${currentUser && currentUser.uid}`
@@ -90,7 +93,7 @@ const LayoutHeader = ({}) => {
         )}
 
         <div
-          className={`cart ${cartpath === "/cart" && "cart-active"}`}
+          className={`cart user-admin ${cartpath === "/cart" && "cart-active"}`}
           onClick={() => {
             if (!currentUser) {
               return showsignupmodal();
@@ -98,9 +101,9 @@ const LayoutHeader = ({}) => {
             Router.replace(`/cart/pending/${currentUser && currentUser.uid}`);
           }}
         >
-          <i className="fas fa-shopping-cart"></i>
+          <i className="fas fa-shopping-cart"></i>{" "}
         </div>
-        <div className="user" onClick={() => setIsProfile(true)}>
+        <div className="user " onClick={() => setIsProfile(true)}>
           <i className="fas fa-user"></i>
         </div>
       </div>
